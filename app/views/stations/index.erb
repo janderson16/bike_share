@@ -1,4 +1,8 @@
-<h1>Stations in Greater San Francisco</h1>
+<h1 id='greeting'>Stations in Greater San Francisco</h1>
+<form action="/stations/new" method="get">
+  <input type="submit" value="New Station"/>
+</form>
+  <input type
 <th>Name</th>
 <th>City</th>
 <th>Date Installed</th>
@@ -6,7 +10,7 @@
 <br />
 <% @stations.each do |station| %>
   <tr>
-    <td> <%= station.name %> </td>
+    <td> <a href="/stations/<%= station.id %>"><%= station.name %></a> </td>
     <td> <%= station.city %> </td>
     <td> <%= station.installation_date %> </td>
     <td> <%= station.dock_count %> </td>
