@@ -1,0 +1,7 @@
+<h1><%= @station.name %></h1>
+<h2>Info</h2>
+<p>City <%= @station.city %></p>
+<p>Date Installed <%= @station.installation_date %></p>
+<p>Dock Count <%= @station.dock_count %></p>
+<a href="/stations/<%= @station.id %>/edit"><input type="submit" value="Edit Station" />
+</a>
