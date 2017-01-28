@@ -1,12 +1,12 @@
 class BikeShareApp < Sinatra::Base
 
   get '/' do
-    erb :"home/index"
+    erb :'home/index'
   end
 
-  get '/stations' do
-    @station = Station.all
-    erb :"stations/index"
+  get '/stations/index' do
+    @stations = Station.all
+    erb :'stations/index'
   end
 
   get '/stations/new' do
@@ -26,12 +26,17 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
-    erb :"stations/edit"
+    erb :'stations/edit'
   end
 
   put '/stations/:id' do
       @station = Station.update(params[:id], params[:station])
       redirect "/stations/#{@station.id}"
+    end
+
+    delete 'stations/:id' do
+      @station = Station.destroy(params[:id])
+      redirect "/stations/index"
     end
 
 
