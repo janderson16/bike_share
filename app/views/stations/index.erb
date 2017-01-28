@@ -1,3 +1,23 @@
 <h1>Stations in Greater San Francisco</h1>
-<a href="/stations/index">View Stations</a>
-<a href="/stations/new">add Stations</a>
+<th>Name</th>
+<th>City</th>
+<th>Date Installed</th>
+<th>Number of Docks</th>
+<br />
+<% @stations.each do |station| %>
+  <tr>
+    <td> <%= station.name %> </td>
+    <td> <%= station.city %> </td>
+    <td> <%= station.installation_date %> </td>
+    <td> <%= station.dock_count %> </td>
+    <td>
+      <form action="/stations/<%= station.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete" />
+    </td>
+    <td>
+        <td><a href="/stations/<%=station.id %>/edit">Edit</a></td>
+    </td>
+  </tr>
+  <br />
+  <% end %>
