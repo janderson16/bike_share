@@ -10,6 +10,14 @@
     <td> <%= station.city %> </td>
     <td> <%= station.installation_date %> </td>
     <td> <%= station.dock_count %> </td>
+    <td>
+      <form action="/stations/<%= station.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete" />
+    </td>
+    <td>
+        <td><a href="/stations/<%=station.id %>/edit">Edit</a></td>
+    </td>
   </tr>
   <br />
   <% end %>
