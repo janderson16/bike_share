@@ -6,7 +6,7 @@ require_relative '../spec_helper'
         visit("/")
 
         within ("#greeting") do
-          expect(page). to have_content("Bikesharing dashboard")
+          expect(page).to have_content("Bikesharing dashboard")
         end
     end
 
