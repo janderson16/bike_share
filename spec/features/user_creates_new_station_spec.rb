@@ -8,7 +8,6 @@ describe "when a user visits create stations" do
     fill_in "station[city]", :with => "Denver"
     fill_in "station[dock_count]", :with => 111
     fill_in "station[installation_date]", :with => "11/07/1999"
-    station = Station.new(name:"Denver", city:"Denver", dock_count:111, installation_date:"11/07/1999")
 
     click_on("Add New Station")
 
