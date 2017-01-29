@@ -6,7 +6,6 @@ require_relative '../spec_helper'
 
         visit("/stations/index")
     fill_in "station[name]", :with => "Denver"
-    #require 'pry'; binding.pry
     fill_in "station[city]", :with => "Denver"
     fill_in "station[dock_count]", :with => 111
     fill_in "station[installation_date]", :with => "11/07/1999"
@@ -21,22 +20,18 @@ require_relative '../spec_helper'
 
      it "they can click on a create station button" do
      visit "/"
-    
+
      click_on "add Stations"
      expect(page).to have_current_path "/stations/new"
-     end
-    
+   end
      it "they can click view stations" do
      visit "/"
-    
+
      click_on "View Stations"
      expect(page).to have_current_path "/stations/index"
    end
-end
 
     expect(current_path).to eql "/stations/1"
     expect(page).to have_content "Denver"
-    
-  end
-  end
 
+  end
