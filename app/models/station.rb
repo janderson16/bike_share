@@ -1,6 +1,5 @@
 class Station < ActiveRecord::Base
  validates :name, :city, :installation_date, :dock_count, presence: true
-  #end
 
   def self.total_number_of_stations
     Station.count
@@ -16,7 +15,7 @@ class Station < ActiveRecord::Base
   def self.most_bikes_available_at_station
     Station.maximum :dock_count
   end
-  
+
   def self.fewest_bikes_available_at_station
     Station.minimum :dock_count
   end
@@ -50,4 +49,3 @@ def self.newest_station
     end
   end
 end
-  
