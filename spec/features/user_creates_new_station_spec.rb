@@ -5,7 +5,6 @@ describe "when a user visits create stations" do
     visit "/stations/new"
 
     fill_in "station[name]", :with => "Denver"
-    #require 'pry'; binding.pry
     fill_in "station[city]", :with => "Denver"
     fill_in "station[dock_count]", :with => 111
     fill_in "station[installation_date]", :with => "11/07/1999"
@@ -15,6 +14,6 @@ describe "when a user visits create stations" do
 
     expect(current_path).to eql "/stations/1"
     expect(page).to have_content "Denver"
-    
+
   end
 end
