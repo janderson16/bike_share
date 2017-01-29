@@ -8,9 +8,6 @@ describe "when a user visits create stations" do
     fill_in "station[city]", :with => "Denver"
     fill_in "station[dock_count]", :with => 111
     fill_in "station[installation_date]", :with => "11/07/1999"
-    station = Station.new(name:"Denver", city:"Denver", dock_count:111, installation_date:"11/07/1999")
-
-<<<<<<< HEAD
 
         within ("#greeting") do
           expect(page). to have_content("Stations in Greater San Francisco")
@@ -35,12 +32,11 @@ describe "when a user visits create stations" do
     expect(page).to have_content "Denver"
 
   end
-=======
+
     click_on("Add New Station")
 
     expect(current_path).to eql "/stations/1"
     expect(page).to have_content "Denver"
-    
+
   end
 end
->>>>>>> 16436478c1af89e7b27da0f4e8a18b91ab368d35
