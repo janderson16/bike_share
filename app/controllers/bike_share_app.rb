@@ -4,6 +4,7 @@ class BikeShareApp < Sinatra::Base
     erb :'home/index'
   end
 
+
   get '/stations/index' do
     @stations = Station.all
     erb :'stations/index'
@@ -32,13 +33,19 @@ class BikeShareApp < Sinatra::Base
   put '/stations/:id' do
       @station = Station.update(params[:id], params[:station])
       redirect "/stations/#{@station.id}"
-    end
+  end
+
 
   delete '/stations/:id' do
     @station = Station.destroy(params[:id])
     redirect "/stations/index"
   end
 
+  get '/home/station_dashboard' do
+    @stations = Station.all
+    erb :'home/station_dashboard'
+  end
+  
   get '/trips' do
     @trips = Trip.all
     erb :'trips/index'
