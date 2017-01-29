@@ -1,21 +1,28 @@
 <h1>Station Dashboard</h1>
 
 
-<p>Total number of stations in Greater San Francisco <em><%= Station.count%></em></p>
-<p>Average number of bikes available per station <em><%= total_docks = @stations.map { |station| station.dock_count }
-        dock = total_docks.reduce(:+) / Station.count
-        dock%></em></p>
-<p>
-  Stations with most bikes available
-<%= Station.includes(:dock_count).order('dock_count.sort_order') %>
-<!-- <%= @stations.map do |station|
-  station.order("dock_count DESC").first
-end%> -->
+<p>Total number of stations in Greater San Francisco <em><%= Station.total_number_of_stations%></em></p>
+
+<p>Average number of bikes available per station <em><%= Station.average_number_of_bikes_available_per_station %></em></p>
+
+<p> Most Bikes available at a station <%=Station.most_bikes_available_at_station%> </p>
+
+<p> Fewest bikes available at a station <%=Station.fewest_bikes_available_at_station%> </p>
 
 
+
+<p> Station(s) with maximum amount of  bikes 
+  <%=Station.station_with_max_bikes%>
 </p>
-Total Counts of station
-Average Bikes Availabale
-<!-- iterate through each station calling dock_count,
-      save to a container/variable
-      divide variable by Station.count-->
+
+<p> Station(s) with minimum amount of  bikes 
+  <%=Station.station_with_min_bikes%>
+</p>
+
+<p> Oldest Station(s) 
+  <%=Station.oldest_station%>
+</p>
+
+<p> Newest Station(s)
+  <%=Station.newest_station%>
+</p>
