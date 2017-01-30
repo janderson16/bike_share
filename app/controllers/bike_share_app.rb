@@ -1,3 +1,6 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
 
   get '/' do
@@ -45,7 +48,7 @@ class BikeShareApp < Sinatra::Base
     @stations = Station.all
     erb :'home/station_dashboard'
   end
-  
+
   get '/trips' do
     @trips = Trip.all
     erb :'trips/index'
