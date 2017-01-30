@@ -11,7 +11,9 @@ require_relative '../spec_helper'
     end
 
     it "they can click view stations" do
+
       Station.create!(name: 'test', dock_count: 3, city: 'test', installation_date: 'Mon, 05 Aug 2013')
+
       visit "/stations/index"
 
     click_link "Edit"
@@ -19,7 +21,9 @@ require_relative '../spec_helper'
   end
 
     it "they can delete stations" do
+
       Station.create!(name: 'test', dock_count: 3, city: 'test', installation_date: 'Mon, 05 Aug 2013')
+
       visit "/stations/index"
 
       click_on "Delete"
@@ -34,7 +38,9 @@ require_relative '../spec_helper'
     end
 
     it "user sees a list of stations and index is not empty" do
+
       Station.create!(name: 'test', dock_count: 3, city: 'test', installation_date: 'Mon, 05 Aug 2013')
+
       visit "/stations/index"
 
       expect(page).to have_content('test')
