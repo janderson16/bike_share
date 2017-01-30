@@ -10,6 +10,8 @@
 <th>Bike ID</th>
 <th>Subscription Type</th>
 <th>ZIP Code</th>
+
+
 <br />
 <% @trips.each do |trip| %>
   <tr>
@@ -33,3 +35,4 @@
   </tr>
   <br />
   <% end %>
+  <%= will_paginate @trips %>
