@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
   RSpec.describe Station do
-    describe "validates" do
+    describe "validations" do
       it "validates presence of name" do
         station_invalid = Station.create(dock_count: 1, city: "Denver", installation_date:"11072016")
 

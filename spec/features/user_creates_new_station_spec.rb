@@ -7,7 +7,7 @@ describe "when a user visits create stations" do
     fill_in "station[name]", :with => "Denver"
     fill_in "station[city]", :with => "Denver"
     fill_in "station[dock_count]", :with => 111
-    fill_in "station[installation_date]", :with => "11/07/1999"
+    fill_in "station[installation_date]", :with => "Mon, 05 Aug 2013"
 
         within ("#greeting") do
           expect(page). to have_content("Stations in Greater San Francisco")
