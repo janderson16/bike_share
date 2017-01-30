@@ -7,8 +7,8 @@ file = './db/csv/station.csv'
 csv_text = File.read(file)
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
-  
-  Station.create!(name: row[1], dock_count: row[4], city: row[5], installation_date: Date.strptime(row[6], '%m/%d/%Y'))
+
+  Station.create!(name: StationName.find_or_create_by(station_name: row[1]), dock_count: row[4], city: City.find_or_create_by(name: row[5]), installation_date: Date.strptime(row[6], '%m/%d/%Y'))
 
 end
 
