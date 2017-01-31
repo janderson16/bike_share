@@ -12,7 +12,7 @@ class Station < ActiveRecord::Base
   def self.most_bikes_available_at_station
     self.maximum :dock_count
   end
-  
+
   def self.fewest_bikes_available_at_station
     self.minimum :dock_count
   end

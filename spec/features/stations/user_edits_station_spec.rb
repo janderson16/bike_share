@@ -10,6 +10,7 @@ describe "when a user edits current station" do
     fill_in "station[city]", :with => "Denver"
     fill_in "station[dock_count]", :with => 111
     fill_in "station[installation_date]", :with => "2013-08-06"
+
     click_on("Update Station")
 
     station = Station.create(name: 'SF1', dock_count: 3, city: 'Denver', installation_date:"2013-08-06")
