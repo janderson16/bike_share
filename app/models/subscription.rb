@@ -1,4 +1,4 @@
 class Subscription < ActiveRecord::Base
-  validates :subscription_type, presence: true
-  belongs_to :trip
+  validates :kind, presence: true
+  has_many :trips
 end

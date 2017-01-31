@@ -1,4 +1,4 @@
 class Bike < ActiveRecord::Base
   validates :serial_no, presence: true
-  belongs_to :trip
+  has_many :trips
 end
