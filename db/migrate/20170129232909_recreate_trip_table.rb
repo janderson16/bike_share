@@ -10,7 +10,7 @@ class RecreateTripTable < ActiveRecord::Migration[5.0]
       t.string :end_station_name
       t.integer :end_station_id
       t.string :bike_id
-      t.string :subscription_type
+      t.string :subscription_id
       t.string :zip_code
 
       t.timestamps null: false
