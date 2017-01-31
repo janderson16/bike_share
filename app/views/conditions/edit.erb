@@ -1,0 +1,21 @@
+<h1 id='greeting'> Update Weather Records</h1>
+
+<form id = 'form' action="/conditions/<%= @condition.id%>" method="post">
+<input type="hidden" name="_method" value="PUT" />
+<label for =""> Date:</label>
+<input type="textfield" placeholder="Date" name="condition[date]" value="<%= @condition.date %>"><br>
+<label for =""> Max Temperature:</label>
+<input type="textfield" placeholder="Max Temperature" name="condition[max_temperature]" value="<%= @condition.max_temperature %>"><br>
+<label for =""> Mean Temperature</label>
+<input type="textfield" placeholder="Mean Temperature" name="condition[mean_temperature]" value="<%= @condition.mean_temperature %>"><br>
+<label for = "">Min Temperature:</label>
+<input type="textfield" placeholder="Min Temperature" name="condition[min_temperature]" value="<%= @condition.mean_temperature %>"><br>
+<label for = ""> Mean Humidity:</label>
+<input type="textfield" placeholder="Mean Humidity" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>"><br>
+<label for = "">Mean Visibility:</label>
+<input type="textfield" placeholder="Mean Visibility" name="condition[mean_visibilty]" value="<%= @condition.mean_visibilty%>"><br>
+<label for = "">Mean Wind Speed:</label>
+<input type="textfield" placeholder="Mean Wind Speed" name="condition[mean_wind_speed]" value="<%= @condition.mean_wind_speed %>"><br>
+<label for = "">Precipitation:</label>
+<input type="textfield" placeholder="Precipitation" name="condition[precipitation]" value="<%= @condition.precipitation %>"><br>
+</form>
