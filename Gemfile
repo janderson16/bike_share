@@ -13,5 +13,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rack-test'
+  gem 'pry'
+  gem 'database_cleaner'
+  gem 'rb-readline', '~> 0.5.3'
 end
-

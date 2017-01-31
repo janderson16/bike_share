@@ -1,0 +1,15 @@
+<h1 id='greeting'>Update a Station</h1>
+
+<form id = 'form' action="/stations/<%= @station.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label for="">Name:</label>
+  <input type="textfield" placeholder="Name of station" name="station[name]" value="<%= @station.name %>"><br>
+  <label for="">City:</label>
+  <input type="textfield" placeholder="City" name="station[city]" value="<%= @station.city %>"><br>
+  <label for="">Date Installed:</label>
+  <input type="textfield" placeholder="Date installed" name="station[installation_date]" value="<%= @station.installation_date %>"><br>
+  <label for="">Number of bike docks:</label>
+  <input type="textfield" placeholder="Number of bike docks" name="station[dock_count]" value="<%= @station.dock_count %>"><br>
+  <input type="submit" value="Update Station" />
+</form>
+

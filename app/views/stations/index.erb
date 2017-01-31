@@ -1,0 +1,26 @@
+<h1 id='greeting'>Stations in Greater San Francisco</h1>
+<form action="/stations/new" method="get">
+  <input type="submit" value="New Station"/>
+</form>
+<th>Name</th>
+<th>City</th>
+<th>Date Installed</th>
+<th>Number of Docks</th>
+<br />
+<% @stations.each do |station| %>
+  <tr>
+    <td> <a href="/stations/<%= station.id %>"><%= station.name %></a> </td>
+    <td> <%= station.city %> </td>
+    <td> <%= station.installation_date %> </td>
+    <td> <%= station.dock_count %> </td>
+    <td>
+      <form action="/stations/<%= station.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete" />
+    </td>
+    <td>
+        <td><a href="/stations/<%=station.id %>/edit">Edit</a></td>
+    </td>
+  </tr>
+  <br />
+  <% end %>

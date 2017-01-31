@@ -1,0 +1,35 @@
+<h1 id='greeting'> Trip Index </h1>
+<form action="/trips/new" method="get">
+  <input type="submit" value="Create New Trip"/>
+</form>
+<th>Duration</th>
+<th>Start Date</th>
+<th>Start Station</th>
+<th>End Date</th>
+<th>End Station</th>
+<th>Bike ID</th>
+<th>Subscription Type</th>
+<th>ZIP Code</th>
+<br />
+<% @trips.each do |trip| %>
+  <tr>
+    <td> <a href="/trips/<%= trip.id %>"> Trip <%= trip.id %></a> </td>
+    <td> <%= trip.duration %> </td>
+    <td> <%= trip.start_date %> </td>
+    <td> <%= trip.start_station %> </td>
+    <td> <%= trip.end_date %> </td>
+    <td> <%= trip.end_station %> </td>
+    <td> <%= trip.bike_id %> </td>
+    <td> <%= trip.subscription_type %> </td>
+    <td> <%= trip.zip_code %> </td>
+    <td>
+      <form action="/trips/<%= trip.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete" />
+    </td>
+    <td>
+        <td><a href="/trips/<%=trip.id %>/edit">Edit</a></td>
+    </td>
+  </tr>
+  <br />
+  <% end %>
