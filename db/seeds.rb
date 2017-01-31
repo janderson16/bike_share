@@ -8,7 +8,6 @@ require 'activerecord-import'
 require 'activerecord-import/base'
 require 'activerecord-import/active_record/adapters/postgresql_adapter'
 
-
 file = './db/csv/station.csv'
 
 csv_text = File.read(file)
