@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 
   describe "when a user visits '/' " do
     it "they see a welcome message" do
