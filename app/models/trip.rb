@@ -13,4 +13,9 @@ class Trip < ActiveRecord::Base
     self.minimum :duration
   end
 
+  def self.station_with_most_starting_rides
+    Trip.group(:start_station_id).order
+    # station = self.where(: Trip.maximum(:dock_count))
+    # station.pluck(:name)
+  end
 end
