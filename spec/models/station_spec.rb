@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 
   describe Station do
     describe "validates" do
@@ -35,7 +35,6 @@ require_relative '../spec_helper'
 
     describe "validates" do
       it "is valid with valid attributes" do
-
       station_valid = Station.create(name: "Santiago", dock_count: 1, city: "Denver", installation_date:"11/07/1999")
 
       expect(station_valid).to be_valid

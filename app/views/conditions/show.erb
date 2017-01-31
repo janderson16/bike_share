@@ -1,0 +1,32 @@
+<div id = 'heading'>
+  <h1><%= @condition.date</h1>
+
+<h3>Information</h3>
+<div id = 'table1>
+<table>
+  <tr>
+    <th>Max Temperature</th>
+    <th>Mean Temperature</th>
+    <th>Min Temperature</th>
+    <th>Mean Humidity</th>
+    <th>Mean Visibility(mi.)</th>
+    <th>Mean Wind Speed(mph)</th>
+    <th>Precipitation(in.</th>
+  </tr>
+  <tr>
+    <td>@condition.max_temperature</td>
+    <td>@condition.mean_temperature</td>    
+    <td>@condtion.min_tempereture</td>    
+    <td>@condition.mean_humidity</td>    
+    <td>@condition.mean_visibilty</td>    
+    <td>@condtion.mean_wind_speed</td>    
+    <td>@condtion.precipitation</td>    
+  </tr>
+</table>
+</div>
+
+<a href='/conditions/<%= @condtion.id %>/edit'><input type="submit" value="Edit Weather"/></a>
+<form action="/stations/<%=@station.id %>" method="post">
+  <input type = "hidden" name="_method" value="DELETE"/>
+  <input type = "submit" value="Delete Weather Condition"/>
+</form>
