@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 
   describe "when a user visits trips/id/index" do
     it "they see a trip number" do
@@ -32,6 +32,7 @@ require_relative '../spec_helper'
       click_on("Update Trip")
 
       expect(current_path).to eql('/trips/1')
+      within ("#table1")
       expect(page).to have_content("testedit")
     end
 
