@@ -16,6 +16,21 @@ csv.each do |row|
 end
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+# file1 = './db/csv/trip.csv'
+#
+# csv_text = File.read(file1)
+# csv = CSV.parse(csv_text, :headers => true)
+# csv.each do |row|
+# start_date = Time.strptime(row[2], '%m/%d/%Y %H:%M:%S')
+# end_date = Time.strptime(row[5], '%m/%d/%Y %H:%M:%S')
+#   Trip.create!(duration: row[1], start_date: start_date, start_station_name: row[3], start_station_id: row[4], end_date: end_date, end_station_name: row[6], end_station_id: row[7], bike_id: row[8], subscription_type: row[9], zip_code: row[10])
+#
+# end
+=======
+>>>>>>> master
 file1 = './db/csv/trip.csv'
 
 csv_text = File.read(file1)
@@ -49,3 +64,7 @@ end_date = Time.strptime(row[5], '%m/%d/%Y %H:%M')
 >>>>>>> b4bf1d2423d938f5cd45e388448599aebe8e3ad1
 
 end
+<<<<<<< HEAD
+=======
+>>>>>>> b4bf1d2423d938f5cd45e388448599aebe8e3ad1
+>>>>>>> master

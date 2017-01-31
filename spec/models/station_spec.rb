@@ -34,7 +34,11 @@ require_relative '../../spec_helper'
     end
 
     describe "validates" do
+<<<<<<< HEAD
       it "is valid with valid attributes" do
+=======
+      it "is valid with valid attributes" do 
+>>>>>>> master
       station_valid = Station.create(name: "Santiago", dock_count: 1, city: "Denver", installation_date:"11/07/1999")
 
       expect(station_valid).to be_valid

@@ -1,5 +1,16 @@
 class Trip < ActiveRecord::Base
-  validates :duration, :start_station_id, :start_date, :end_station_id, :end_date, :bike_id, :subscription_type, presence: true
-  has_one :subscription
-  has_one :bike
+  validates :duration, :start_station_name, :start_date, :end_station_name, :end_date, :bike_id, :subscription_type, presence: true
+
+  def self.average_duration_of_ride
+    self.average :duration
+  end
+
+  def self.longest_ride
+    self.maximum :duration
+  end
+
+  def self.shortest_ride
+    self.minimum :duration
+  end
+
 end
