@@ -7,38 +7,6 @@ class Trip < ActiveRecord::Base
   belongs_to :start_station, class_name: 'Station', foreign_key: 'start_station_id'
   belongs_to :end_station, class_name: 'Station', foreign_key: 'end_station_id'
 
-  def self.most_ridden_bike
-    @trips.group('bike_id').order('count(*)').pluck(:bike_id).first
-  end
-
-  def self.least_ridden_bike
-    @trips.group('bike_id').order('count(*)').pluck(:bike_id).last
-  end
-
-  def self.subscriber_count
-    @trips.where("subscription_id = '1'").count
-  end
-
-  def self.customer_count
-    @trips.where("subscription_id = '2'").count
-  end
-
-  def self.subscriber_breakout
-    "#{(subscriber_count / customer_count) * 100} %"
-  end
-
-  def self.most_common_date
-    trips.group('start_date').order('count(*)').pluck(:start_date).first
-  end
-
-  def self.most_common_date_count
-    trips.where(start_date: '#{most_common_date}').count
-  end
-
-  def self.least_common_date
-    trips.group('start_date').order('count(*)').pluck(:start_date).last
-  end
-
   def self.average_duration_of_ride
     self.average :duration
   end
@@ -62,7 +30,6 @@ class Trip < ActiveRecord::Base
   end
 
   def self.rides_per_month
-
     month_rides = self.group("DATE_TRUNC('month', start_date)").count
     month_rides.map do |m|
       "Month: #{m[0].strftime("%B")}, Count: #{m[1]}"
@@ -71,8 +38,48 @@ class Trip < ActiveRecord::Base
   end
 
   def self.rides_per_year
-    self.group("DATE_TRUNC('month', start_date)").count
+    year_rides = self.group("DATE_TRUNC('year', start_date)").count
+    year_rides.map do |m|
+      "Year: #{m[0].strftime("%Y")}, Count: #{m[1]}"
+      # require "pry"; binding.pry
+    end
   end
+
+  def self.most_ridden_bike
+    self.group('bike_id').order('count(*)').pluck(:bike_id).first
+  end
+
+  def self.least_ridden_bike
+    self.group('bike_id').order('count(*)').pluck(:bike_id).last
+  end
+
+  def self.subscriber_count
+    self.where("subscription_id = '1'").count
+  end
+
+  def self.customer_count
+    self.where("subscription_id = '2'").count
+  end
+
+  # def self.subscriber_breakout
+  #   "#{(subscriber_count / customer_count) * 100} %"
+  # end
+
+  def self.most_common_date
+    trips.group('start_date').order('count(*)').pluck(:start_date).first
+  end
+
+  def self.most_common_date_count
+    trips.where(start_date: '#{most_common_date}').count
+  end
+
+  def self.least_common_date
+    trips.group('start_date').order('count(*)').pluck(:start_date).last
+  end
+
+
+
+
 
   def self.least_common_date_count
     trips.where(start_date: '#{least_common_date}').count

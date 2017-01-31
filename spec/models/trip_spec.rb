@@ -117,46 +117,75 @@ require "spec_helper"
     end
   end
 
-  # describe ".most_ridden_bike" do
-  #   it "" do
+  describe ".rides_per_year" do
+    it "returns rides per year" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/09/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.rides_per_month).to eql(["Month: October, Count: 1", "Month: September, Count: 1", "Month: October, Count: 1"])
+    end
+  end
+
+  describe ".most_ridden_bike" do
+    it "returns most ridden bike by bike id" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.most_ridden_bike).to eql("12344")
+    end
+  end
+
+  describe ".least_ridden_bike" do
+    it "returns least ridden bike by bike id" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.least_ridden_bike).to eql("12345")
+    end
+  end
+
+  describe ".subscriber_count" do
+    it "returns subscriber count" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.subscriber_count).to eql(2)
+    end
+  end
+
+  describe ".customer_count" do
+    it "returns customer count" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.customer_count).to eql(1)
+    end
+  end
+
+  # describe ".subscriber_breakout" do
+  #   it "returns subscriber breakout" do
   #     Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
   #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
   #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
   #
-  #     expect(Trip.most_ridden_bike).to eql("12345")
+  #     expect(Trip.subscriber_breakout).to eql(1)
   #   end
   # end
-  #
-  # describe ".least_ridden_bike" do
-  #   it "" do
-  #     Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #
-  #     expect(Trip.least_ridden_bike).to eql("12344")
-  #   end
-  # end
-  #
-  # describe "." do
-  #   it "" do
-  #     Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #
-  #     expect().to eql()
-  #   end
-  # end
-  #
-  # describe ".date_with_most_trips" do
-  #   it "" do
-  #     Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #
-  #     expect().to eql()
-  #   end
-  # end
-  #
+  describe ".most_common_date" do
+    it "" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.most_common_date).to eql()
+    end
+  end
+
   # describe ".date_with_least_trips" do
   #   it "" do
   #     Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
