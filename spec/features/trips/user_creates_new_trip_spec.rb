@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 
 describe "when a user visits create trips" do
   it "they can create a new trip" do
@@ -15,7 +15,7 @@ describe "when a user visits create trips" do
 
     click_on("Add New Trip")
     expect(current_path).to eql "/trips/1"
-    expect(page).to have_content "Thornton"
-
-  end
+    expect(page).to have_content "Station1"
 end
+  end
+
