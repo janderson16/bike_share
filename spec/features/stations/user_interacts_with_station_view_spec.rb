@@ -1,4 +1,4 @@
- require_relative '../../spec_helper'
+ require 'spec_helper'
 
 describe "when user views individual station" do
   it "they can edit/delete that station" do
@@ -9,7 +9,7 @@ describe "when user views individual station" do
       expect(page).to have_content("Denver")
     end
 
-    within ("#table1") do 
+    within ("#table1") do
     expect(page).to have_content "Denver"
     expect(page).to have_content "111"
     expect(page).to have_content "2013-08-06"

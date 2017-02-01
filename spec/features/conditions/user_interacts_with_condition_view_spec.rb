@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 
 describe "when user views individual weather condition" do
   it "they can delete that weather condition" do
@@ -18,9 +18,10 @@ describe "when user views individual weather condition" do
       expect(page).to have_content "50"
       expect(page).to have_content "40"
     end
-  
+
   it "they can click on delete button" do
     click_on "Delete Weather Condition"
       expect(current_path).to eql "/conditions/index"
+    end
   end
 end

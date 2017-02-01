@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 
 describe "when a user visit index weather conditions page" do
   it "they see a welcome message" do
@@ -20,7 +20,7 @@ describe "when a user visit index weather conditions page" do
     expect(page).to have_content "Percipitation"
   end
 
-  it "they can click conditions for more information" do 
+  it "they can click conditions for more information" do
     Condition.create(date:"11072016", max_temperature:"90", mean_temperature:"50", min_temperature:"0", mean_humidity:"10", mean_visibility:"10", mean_wind_speed:"25", precipitation:"10")
 
     visit "/stations/index"
@@ -31,7 +31,7 @@ describe "when a user visit index weather conditions page" do
 
   it "they can delete a weather condition" do
     Condition.create(date:"11072016", max_temperature:"9000", mean_temperature:"50", min_temperature:"0", mean_humidity:"10", mean_visibility:"10", mean_wind_speed:"25", precipitation:"10")
-    
+
     visit "/stations/index"
 
     click_on "Delete"
@@ -44,4 +44,5 @@ describe "when a user visit index weather conditions page" do
 
     expect(page).to have_content("90")
   end
+end
 end
