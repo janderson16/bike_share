@@ -23,7 +23,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.station_with_max_bikes
-    station = self.where(dock_count: Station.maximum(:dock_count))
+    station = where(dock_count: maximum(:dock_count))
     station.pluck(:name)
   end
 

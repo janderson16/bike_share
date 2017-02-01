@@ -62,8 +62,8 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/new'
   end
 
-  post '/trips/new' do
-    @trips = Trip.create(params[:trip])
+  post '/trips' do
+    @trip = Trip.create(params[:trip])
     redirect "trips/#{@trip.id}"
   end
 
