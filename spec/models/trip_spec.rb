@@ -167,15 +167,16 @@ require "spec_helper"
     end
   end
 
-  # describe ".subscriber_breakout" do
-  #   it "returns subscriber breakout" do
-  #     Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #
-  #     expect(Trip.subscriber_breakout).to eql(1)
-  #   end
-  # end
+  describe ".subscriber_breakout" do
+    it "returns subscriber breakout" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.subscriber_breakout).to eql("66%")
+    end
+  end
+
   describe ".most_common_date" do
     it "returns date with highest number of trips" do
       Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
