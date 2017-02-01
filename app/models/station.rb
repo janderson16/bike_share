@@ -37,7 +37,4 @@ class Station < ActiveRecord::Base
     station = self.where(installation_date: Station.maximum(:installation_date))
     station.pluck(:name)
   end
-
-  def self.thing
-  end
 end
