@@ -4,6 +4,7 @@ class Trip < ActiveRecord::Base
   belongs_to :bike, class_name: 'Bike', foreign_key: 'bike_id'
   belongs_to :start_station, class_name: 'Station', foreign_key: 'start_station_id'
   belongs_to :end_station, class_name: 'Station', foreign_key: 'end_station_id'
+  has_many :stations
 end
 
 def self.most_ridden_bike
