@@ -14,17 +14,17 @@ require 'activerecord-import/active_record/adapters/postgresql_adapter'
 file = './db/csv/station.csv'
 csv_text = File.read(file)
 csv = CSV.parse(csv_text, :headers => true)
-Pry::rescue{csv.each do |row|
+csv.each do |row|
   Station.create!(name: row[1], dock_count: row[4],
                   city: City.find_or_create_by(name: row[5]),
                   installation_date: Date.strptime(row[6], '%m/%d/%Y'))
 
-end}
+end
 
 weather_file = './db/csv/weather.csv'
 weather = File.read(weather_file)
 weather_cells = CSV.parse(weather, headers: true)
-Pry::rescue{weather_cells.each do |row|
+weather_cells.each do |row|
   Weather.create!(
       max_temp:               row[1].to_i,
       mean_temp:              row[2].to_i,
@@ -34,10 +34,10 @@ Pry::rescue{weather_cells.each do |row|
       precipitation:          row[19].to_i,
       date:                   Date.strptime(row[0], '%m/%d/%Y')
                   )
-  end}
+  end
 
 trips = []
-Pry::rescue{CSV.foreach('./db/csv/trip.csv', headers: true) do |row|
+CSV.foreach('./db/csv/trip.csv', headers: true) do |row|
   start_date = Date.strptime(row[2], '%m/%d/%Y')
   end_date = Date.strptime(row[5], '%m/%d/%Y')
   trips << Trip.new(
@@ -55,4 +55,4 @@ Pry::rescue{CSV.foreach('./db/csv/trip.csv', headers: true) do |row|
     Trip.import trips
     trips = []
   end
-end}
+end
