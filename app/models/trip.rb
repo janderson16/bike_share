@@ -61,27 +61,32 @@ class Trip < ActiveRecord::Base
     self.where("subscription_id = '2'").count
   end
 
-  # def self.subscriber_breakout
-  #   "#{(subscriber_count / customer_count) * 100} %"
-  # end
 
   def self.most_common_date
-    trips.group('start_date').order('count(*)').pluck(:start_date).first
-  end
-
-  def self.most_common_date_count
-    trips.where(start_date: '#{most_common_date}').count
+    date = self.group('start_date').order('count(*)').pluck(:start_date).last
+    date.strftime("%B %e, %Y")
   end
 
   def self.least_common_date
-    trips.group('start_date').order('count(*)').pluck(:start_date).last
+    date = self.group('start_date').order('count(*)').pluck(:start_date).first
+    date.strftime("%B %e, %Y")
   end
 
+  def self.most_common_date_count
+    date = self.group(:start_date).order('count(*)').pluck(:start_date).last
+    self.where(start_date: "#{date}").count
+    # date = self.where(start_date: "2014-09-15 06:00:00 UTC").count
+    # # self.find(start_date: "#{most_common_date}").count
+    # self.group('start_date').count.first[1]
 
-
-
+  end
 
   def self.least_common_date_count
-    trips.where(start_date: '#{least_common_date}').count
+    date = self.group(:start_date).order('count(*)').pluck(:start_date).first
+    self.where(start_date: "#{date}").count
+  end
+
+  def self.subscriber_breakout
+    "#{(subscriber_count / customer_count) * 100} %"
   end
 end

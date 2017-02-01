@@ -177,23 +177,52 @@ require "spec_helper"
   #   end
   # end
   describe ".most_common_date" do
-    it "" do
+    it "returns date with highest number of trips" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/09/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.most_common_date).to eql("November 12, 2012")
+    end
+  end
+
+  describe ".most_common_date_count" do
+    it "returns the highest number of trips on a single date" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/09/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.most_common_date_count).to eql(3)
+    end
+  end
+
+  describe ".date_with_least_trips" do
+    it "returns date with least number of trips" do
       Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
       Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
       Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
 
-      expect(Trip.most_common_date).to eql()
+      expect(Trip.least_common_date).to eql("October 12, 2012")
     end
   end
 
-  # describe ".date_with_least_trips" do
-  #   it "" do
-  #     Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #     Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
-  #
-  #     expect().to eql()
-  #   end
-  # end
+  describe ".least_common_date_count" do
+    it "returns the lowest number of trips on a single date" do
+      Trip.create(duration: "30", start_station_id: 1, start_date: "12/10/2012", end_station_id: 2, end_date: "12/12/2012", bike_id: "12344", subscription_id: 2, zip_code: "12345")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/11/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+      Trip.create(duration: "60", start_station_id: 2, start_date: "12/09/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
+
+      expect(Trip.least_common_date_count).to eql(1)
+    end
+  end
 
 end
