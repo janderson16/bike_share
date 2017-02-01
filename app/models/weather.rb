@@ -1,3 +1,3 @@
 class Weather < ActiveRecord::Base
-  has_one :trip
+  has_many :trips
 end
