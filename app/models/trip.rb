@@ -6,6 +6,7 @@ class Trip < ActiveRecord::Base
   belongs_to :bike, class_name: 'Bike', foreign_key: 'bike_id'
   belongs_to :start_station, class_name: 'Station', foreign_key: 'start_station_id'
   belongs_to :end_station, class_name: 'Station', foreign_key: 'end_station_id'
+  has_many :stations
 
   def self.average_duration_of_ride
     self.average :duration
@@ -83,8 +84,6 @@ class Trip < ActiveRecord::Base
   end
 
   def self.subscriber_breakout
-
-    # require "pry"; binding.pry
     "#{((subscriber_count.to_f)/ ((subscriber_count.to_f) + (customer_count.to_f)) *100).to_i}%"
   end
 end

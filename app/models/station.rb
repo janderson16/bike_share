@@ -1,6 +1,8 @@
 class Station < ActiveRecord::Base
  validates :name, :city_id, :installation_date, :dock_count, presence: true
  belongs_to :city
+ has_many :start_trips, class_name: 'Trip', foreign_key: 'start_station_id'
+ has_many :end_trips, class_name: 'Trip', foreign_key: 'end_station_id'
 
   def self.total_number_of_stations
     self.count
@@ -38,6 +40,30 @@ class Station < ActiveRecord::Base
     station.pluck(:name)
   end
 
-  def self.thing
+
+  def self.rides_started_here
+    self.start_trips.count
   end
+
+  def self.rides_ending_here
+    self.end_trips.count
+  end
+
+  def self.most_common_destination
+    self.start_trips.group('end_station_id', 'id').order('count(*)').first.end_station.name
+  end
+
+  def self.most_common_origin
+    self.end_trips.group('start_station_id', 'id').order('count(*)').first.start_station.name
+  end
+
+  def self.most_common_zip_code_of_users
+    self.start_trips.group('zip_code', 'id').order('count(*)').first.zip_code
+  end
+
+  def self.most_common_bike_starting_here
+    self.start_trips.group('bike_id', 'id').order('count(*)').first.bike_id
+  end
+
+
 end
