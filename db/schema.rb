@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170201054359) do
     t.string   "name"
     t.integer  "dock_count"
     t.integer  "city_id"
-    t.string   "installation_date"
+    t.date     "installation_date"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20170201054359) do
 
   create_table "trips", force: :cascade do |t|
     t.integer  "duration"
-    t.string   "start_date"
+    t.date     "start_date"
     t.integer  "start_station_id"
-    t.string   "end_date"
+    t.date     "end_date"
     t.integer  "end_station_id"
     t.string   "bike_id"
     t.string   "subscription_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170201054359) do
     t.integer "mean_wind_speed"
     t.integer "precipitation"
     t.integer "trip_id"
-    t.string  "date"
+    t.date    "date"
   end
 
 end
