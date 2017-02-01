@@ -11,9 +11,9 @@
 <th>Mean Wind Speed(mph)</th>
 <th>Precipitation(in.)</th>
 <br/>
-  <% @conditions.each do |condtion| %>
+  <% @conditions.each do |condition| %>
   <tr>
-    <td> <a href='/conditions/<%= condtion.id %>"><%condition.name %></a></td>
+    <td> <a href='/conditions/<%= condition.id %>"><%condition.name %></a></td>
     <td>station.max_temperature</td>
     <td>station.mean_temperature</td>
     <td>station.min_temperature</td>
