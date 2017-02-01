@@ -23,7 +23,7 @@ class BikeShareApp < Sinatra::Base
 
   post '/stations/new' do
     @station = Station.create(params[:station])
-  redirect "/stations/#{@station.id}"
+    redirect "/stations/#{@station.id}"
   end
 
   get '/stations/:id' do
@@ -54,17 +54,19 @@ class BikeShareApp < Sinatra::Base
 #Routes for Trips
   get '/trips' do
     trips = Trip.all
-    @trips = trips.paginate(:page => params[:page], :per_page => 5)
+    @trips = trips.paginate(:page => params[:page], :per_page => 30)
     erb :'trips/index'
   end
 
   get '/trips/new' do
+    @stations = Station.all.order(:name)
     @trips = Trip.new
     erb :'trips/new'
   end
 
   post '/trips/new' do
     @trip = Trip.create(params[:trip])
+    @trip1 = Trip.first.id
     redirect "trips/#{@trip.id}"
   end
 
@@ -93,39 +95,40 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.all
     erb :'home/trip-dashboard'
   end
-#Routes for Conditions
-  get '/conditions/index' do
-    conditions = Condition.all
-    @conditions = conditions.paginate(:page => params[:page], :per_page => 5)
+
+#Routes for condition Conditions
+  get '/conditions' do
+    weathers = Weather.all
+    @weathers = weathers.paginate(:page => params[:page], :per_page => 10)
     erb :'conditions/index'
-end
+  end
 
   get '/conditions/new' do
-    @conditions = Trip.new
+    @weathers = Weather.new
     erb :'conditions/new'
   end
 
   post 'conditions/new' do
-    @conditions = Conditions.create(params[:condition])
-    redirect "conditions/#{@condition.id}"
+    @weathers = weathers.create(params[:condition])
+    redirect "conditions/#{@weather.id}"
   end
 
   get "/conditions/:id" do
-    @conditions = Condition.find(params[:id])
-    erb :"/condtions/show"
+    @weather = Weather.find(params[:id])
+    erb :"/conditions/show"
   end
 
   get '/conditions/:id/edit' do
-    @conditions = Condition.find(params[:id])
+    @weather = Weather.find(params[:id])
     erb :'conditions/edit'
   end
 
   put '/conditions/:id' do
-    @conditions = Condition.update(params[:id], params[:condition])
-    redirect "conditions/#{@condition.id}"
+    @weathers = weather.update(params[:id], params[:condition])
+    redirect "conditions/#{@weather.id}"
 
   delete '/conditions/:id'
-    @conditions = Condition.destroy(params[:id])
+    @weathers = weather.destroy(params[:id])
     redirect "/conditions"
   end
 
