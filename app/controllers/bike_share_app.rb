@@ -22,7 +22,7 @@ class BikeShareApp < Sinatra::Base
 
   post '/stations/new' do
     @station = Station.create(params[:station])
-  redirect "/stations/#{@station.id}"
+    redirect "/stations/#{@station.id}"
   end
 
   get '/stations/:id' do
@@ -58,12 +58,14 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/new' do
+    @stations = Station.all.order(:name)
     @trips = Trip.new
     erb :'trips/new'
   end
 
-  post '/trips' do
+  post '/trips/new' do
     @trip = Trip.create(params[:trip])
+    @trip1 = Trip.first.id
     redirect "trips/#{@trip.id}"
   end
 
