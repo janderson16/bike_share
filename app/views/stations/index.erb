@@ -1,6 +1,9 @@
-<h1 id='greeting'>Stations in Greater San Francisco</h1>
 
-<a href="/stations/new" method="get">New Station</a>
+<div class="maindiv">
+<h1 id='greeting'>Stations in Greater San Francisco</h1>
+</br>
+</br>
+<div id ='new'> <a href="/stations/new" method="get">New Station</a></div>
 
 <table border="1">
   <tr>
@@ -28,4 +31,9 @@
   </tr>
   <% end %>
  </table>
+ 
   
+  <div class="maindiv">
+  <%= will_paginate @stations %>
+  </div>
+  </div>
