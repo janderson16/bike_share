@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 
 describe "when a user edits current station" do
   it "they can click update information for a station" do
@@ -16,10 +16,10 @@ describe "when a user edits current station" do
     station = Station.create(name: 'SF1', dock_count: 3, city: 'Denver', installation_date:"2013-08-06")
     expect(page).to have_current_path "/stations/1"
 
-    within ("#heading") do 
+    within ("#heading") do
     expect(page).to have_content ("SF1")
     end
-    within ("#table1") do 
+    within ("#table1") do
     expect(page).to have_content "Denver"
     expect(page).to have_content "111"
     expect(page).to have_content "2013-08-06"

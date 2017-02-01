@@ -45,9 +45,9 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations/index"
   end
 
-  get '/home/station_dashboard' do
+  get '/home/station-dashboard' do
     @stations = Station.all
-    erb :'home/station_dashboard'
+    erb :'home/station-dashboard'
   end
 
 #Routes for Trips
@@ -87,11 +87,18 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
+<<<<<<< HEAD
   get '/home/trip_dashboard' do
     @trips = Trip.all
     erb :"/home/trip_dashboard"
   end
 
+=======
+  get '/home/trip-dashboard' do
+    @trips = Trip.all
+    erb :'home/trip-dashboard'
+  end
+>>>>>>> 953ce65a2c944e4ce59d94897226b3f5d17f93f9
 #Routes for Conditions
   get '/conditions/index' do
     conditions = Condition.all

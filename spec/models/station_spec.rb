@@ -97,8 +97,8 @@ require 'spec_helper'
 
   describe ".oldest_station" do
     it "returns oldest station" do
-      Station.create(name: "Santiago", dock_count: 1, city: "Denver", installation_date:"11/07/1991")
-      Station.create(name: "Station1", dock_count: 11, city: "Denver", installation_date:"10/07/1999")
+      Station.create(name: "Santiago", dock_count: 1, city_id: 1, installation_date:"11/07/1991")
+      Station.create(name: "Station1", dock_count: 11, city_id: 2, installation_date:"10/07/1999")
 
       expect(Station.oldest_station).to eql(["Santiago"])
     end

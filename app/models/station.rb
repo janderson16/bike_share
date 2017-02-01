@@ -40,6 +40,7 @@ class Station < ActiveRecord::Base
     station.pluck(:name)
   end
 
+
   def self.rides_started_here
     self.start_trips.count
   end
@@ -63,5 +64,6 @@ class Station < ActiveRecord::Base
   def self.most_common_bike_starting_here
     self.start_trips.group('bike_id', 'id').order('count(*)').first.bike_id
   end
+
 
 end
