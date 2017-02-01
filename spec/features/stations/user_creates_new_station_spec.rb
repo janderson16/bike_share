@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 
 describe "when a user visits create stations" do
   it "they can create a new station" do
@@ -13,7 +13,7 @@ describe "when a user visits create stations" do
     station = Station.create(name:"Station1", city:"Denver", dock_count:111, installation_date:"2013-08-06")
     expect(current_path).to eql "/stations/1"
 
-    within ("#heading") do 
+    within ("#heading") do
     expect(page).to have_content "Station1"
     end
     within ("#table1") do

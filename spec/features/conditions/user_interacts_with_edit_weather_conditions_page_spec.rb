@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 
 describe "when a user visits edit weather conditions page" do
   it "they can see" do
@@ -51,4 +51,3 @@ describe "when a user visits edit weather conditions page" do
     end
   end
 end
-
