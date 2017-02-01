@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 
 describe "when user views individual trip" do
   it "they can view that trip" do
