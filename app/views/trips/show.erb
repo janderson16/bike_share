@@ -1,4 +1,5 @@
 <div id ='trip_id' ><h1>Trip <%= @trip.id %></h1></div>
+<div id = 'table1'>
 <h2>Info</h2>
 <p>Duration <%= @trip.duration %></p>
 <p>Start Date <%= @trip.start_date%></p>
@@ -6,10 +7,11 @@
 <p>End Date <%= @trip.end_date %></p>
 <p>End Station <%= @trip.end_station %></p>
 <p>Bike ID <%= @trip.bike_id %></p>
-<p>Subscription Type <%= @trip.subscription_type %></p>
+<p>Subscription Type <%= @trip.subscription_id %></p>
 <p>Zip Code <%= @trip.zip_code %></p>
 <a href="/trips/<%= @trip.id %>/edit"><input type="submit" value="Edit Trip" /></a>
 <form action="/trips/<%= @trip.id %>" method="post">
   <input type="hidden" name="_method" value="DELETE" />
   <input type="submit" value="Delete Trip" />
 </form>
+</div>
