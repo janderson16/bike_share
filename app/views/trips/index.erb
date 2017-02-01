@@ -15,7 +15,7 @@
 <br />
 <% @trips.each do |trip| %>
   <tr>
-    <td> <a href="/trips/<%= trip.id %>"> Trip <%= trip.id %></a> </td>
+    <td> <a href="/trips/<%= @trip.id %>"> Trip <%= trip.id %></a> </td>
     <td> <%= trip.duration %> </td>
     <td> <%= trip.start_date %> </td>
     <td> <%= trip.start_station %> </td>

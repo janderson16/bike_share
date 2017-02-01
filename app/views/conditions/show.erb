@@ -16,16 +16,16 @@
   <tr>
     <td>@condition.max_temperature</td>
     <td>@condition.mean_temperature</td>    
-    <td>@condtion.min_tempereture</td>    
+    <td>@condition.min_tempereture</td>    
     <td>@condition.mean_humidity</td>    
     <td>@condition.mean_visibilty</td>    
-    <td>@condtion.mean_wind_speed</td>    
-    <td>@condtion.precipitation</td>    
+    <td>@condition.mean_wind_speed</td>    
+    <td>@condition.precipitation</td>    
   </tr>
 </table>
 </div>
 
-<a href='/conditions/<%= @condtion.id %>/edit'><input type="submit" value="Edit Weather"/></a>
+<a href='/conditions/<%= @condition.id %>/edit'><input type="submit" value="Edit Weather"/></a>
 <form action="/stations/<%=@station.id %>" method="post">
   <input type = "hidden" name="_method" value="DELETE"/>
   <input type = "submit" value="Delete Weather Condition"/>
