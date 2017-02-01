@@ -13,7 +13,7 @@ require 'spec_helper'
     it "they can click view trips" do
       Trip.create!(duration: '3', start_date: '4', start_station: '5',
                     end_station: '6', end_date: 'tomorrow', bike_id: '3',
-                    subscription_type: 'yes', zip_code: '45678')
+                    subscription_id: 'yes', zip_code: '45678')
       visit "/trips"
 
     click_link "Edit"
@@ -23,7 +23,7 @@ require 'spec_helper'
     it "they can delete trips" do
       Trip.create!(duration: '3', start_date: '4', start_station: '5',
                     end_station: '6', end_date: 'tomorrow', bike_id: '3',
-                    subscription_type: 'yes', zip_code: '45678')
+                    subscription_id: 'yes', zip_code: '45678')
       visit "/trips"
 
       click_on "Delete"
@@ -40,7 +40,7 @@ require 'spec_helper'
     it "user sees a list of trips and index is not empty" do
       Trip.create!(duration: '3', start_date: '4', start_station: '5',
                     end_station: '6', end_date: 'tomorrow', bike_id: '3',
-                    subscription_type: 'yes', zip_code: '45678')
+                    subscription_id: 'yes', zip_code: '45678')
       visit "/trips"
 
       expect(page).to have_content('tomorrow')
@@ -49,7 +49,7 @@ require 'spec_helper'
     it "user clicks on specific station to view its show page" do
       Trip.create!(duration: '3', start_date: '4', start_station: '5',
                     end_station: '6', end_date: 'tomorrow', bike_id: '3',
-                    subscription_type: 'yes', zip_code: '45678')
+                    subscription_id: 'yes', zip_code: '45678')
       visit "/trips"
 
       click_link "Trip 1"

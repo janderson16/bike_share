@@ -36,7 +36,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    @station = Station.update(params[:id], params[:station])
+    @station = Station.update(params[:id].to_i, params[:station])
     redirect "/stations/#{@station.id}"
   end
 
@@ -73,12 +73,13 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/:id/edit' do
-    @trips = Trip.find(params[:id])
+    @stations = Station.all.order(:name)
+    @trip = Trip.find(params[:id])
     erb :'trips/edit'
   end
 
   put '/trips/:id' do
-    @trips = Trip.update(params[:id], params[:trip])
+    @trip = Trip.update(params[:id].to_i, params[:trip])
     redirect "trips/#{@trip.id}"
   end
 

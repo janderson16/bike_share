@@ -4,7 +4,6 @@ require "spec_helper"
     describe "validations" do
       it "validates presence of duration" do
         trip_invalid = Trip.create(start_station_id: 1, start_date: 12/10/2012, end_station_id: 2, end_date: 12/12/2012, bike_id: "12344", subscription_id: 2)
-
         expect(trip_invalid).to_not be_valid
       end
     end
@@ -48,7 +47,6 @@ require "spec_helper"
         expect(trip_invalid).to_not be_valid
       end
     end
-
 
     describe ".average_duration_of_ride" do
     it "measures average duration trip" do
@@ -123,7 +121,7 @@ require "spec_helper"
       Trip.create(duration: "60", start_station_id: 2, start_date: "12/09/2012", end_station_id: 3, end_date: "12/12/2012", bike_id: "12345", subscription_id: 1, zip_code: "23456")
       Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
 
-      expect(Trip.rides_per_month).to eql(["Month: October, Count: 1", "Month: September, Count: 1", "Month: October, Count: 1"])
+      expect(Trip.rides_per_month).to eql(["Month: October, Count: 1", "Month: October, Count: 1", "Month: September, Count: 1"])
     end
   end
 
@@ -209,7 +207,7 @@ require "spec_helper"
       Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2013", end_station_id: 3, end_date: "12/12/2013", bike_id: "12345", subscription_id: 1, zip_code: "23456")
       Trip.create(duration: "60", start_station_id: 2, start_date: "12/10/2014", end_station_id: 3, end_date: "12/12/2014", bike_id: "12345", subscription_id: 1, zip_code: "23456")
 
-      expect(Trip.least_common_date).to eql("October 12, 2012")
+      expect(Trip.least_common_date).to eql("October 12, 2013")
     end
   end
 
