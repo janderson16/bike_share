@@ -28,17 +28,17 @@ class Station < ActiveRecord::Base
   end
 
   def self.station_with_min_bikes
-    station = self.where(dock_count: Station.minimum(:dock_count))
+    station = where(dock_count: Station.minimum(:dock_count))
     station.pluck(:name)
   end
 
   def self.oldest_station
-    station = self.where(installation_date: Station.minimum(:installation_date))
+    station = where(installation_date: Station.minimum(:installation_date))
     station.pluck(:name)
   end
 
   def self.newest_station
-    station = self.where(installation_date: Station.maximum(:installation_date))
+    station = where(installation_date: Station.maximum(:installation_date))
     station.pluck(:name)
   end
 
