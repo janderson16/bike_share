@@ -11,15 +11,15 @@ require 'activerecord-import'
 require 'activerecord-import/base'
 require 'activerecord-import/active_record/adapters/postgresql_adapter'
 
-# file = './db/csv/station.csv'
-# csv_text = File.read(file)
-# csv = CSV.parse(csv_text, :headers => true)
-# Pry::rescue{csv.each do |row|
-#   Station.create!(name: row[1], dock_count: row[4],
-#                   city: City.find_or_create_by(name: row[5]),
-#                   installation_date: row[6])
-#
-# end}
+file = './db/csv/station.csv'
+csv_text = File.read(file)
+csv = CSV.parse(csv_text, :headers => true)
+Pry::rescue{csv.each do |row|
+  Station.create!(name: row[1], dock_count: row[4],
+                  city: City.find_or_create_by(name: row[5]),
+                  installation_date: row[6])
+
+end}
 
 trips = []
 Pry::rescue{CSV.foreach('db/csv/trip.csv', headers: true) do |row|
@@ -40,22 +40,18 @@ Pry::rescue{CSV.foreach('db/csv/trip.csv', headers: true) do |row|
     trips = []
   end
 end}
-#
-# weather = []
-# Pry::rescue{CSV.foreach('db/csv/weather.csv', headers: true) do |row|
-#   date = row[0]strftime('%m/%d/%Y')
-#   weather << Weather.new(
-#       date:                   date,
-#       max_temp:               row[1],
-#       mean_temp:              row[2],
-#       mean_humidity:          row[8],
-#       mean_visibility_miles:  row[14],
-#       mean_wind_speed:        row[17],
-#       precipitation:          row[19],
-#       trip_id:                Trip.find_by(start_date: row[0]).id
-#                               )
-#   if weather.size == 10000
-#     Weather.import weather
-#     weather = []
-#   end
-# end}
+
+Pry::rescue{CSV.foreach('db/csv/weather.csv', headers: true) do |row|
+  if Trip.find_by(start_date: row[0]) != nil
+  Weather.create(
+      max_temp:               row[1].to_i,
+      mean_temp:              row[2].to_i,
+      mean_humidity:          row[8].to_i,
+      mean_visibility_miles:  row[14].to_i,
+      mean_wind_speed:        row[17].to_i,
+      precipitation:          row[19].to_i,
+      trip_id:                Trip.find_by(start_date: row[0]).id,
+      date:                   row[0]
+                                )
+  end
+end}
