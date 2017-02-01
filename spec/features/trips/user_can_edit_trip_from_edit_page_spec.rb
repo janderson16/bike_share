@@ -26,13 +26,13 @@ require 'spec_helper'
       end
 
       within ("#table1") do
-        expect(page).to have_content "Denver"
-        expect(page).to have_content "111"
-        expect(page).to have_content "2013-08-06"
+        expect(page).to have_content "1"
+        expect(page).to have_content "123abc"
+        expect(page).to have_content "2012-02-04"
       end
     end
   end
-  
+
   def setup
     City.create(name: "Denver")
     City.create(name: "Boulder")

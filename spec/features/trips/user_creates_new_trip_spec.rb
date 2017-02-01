@@ -4,9 +4,9 @@ describe "when a user visits create trips" do
   it "they can create a new trip" do
     visit "/trips/new"
 
-    fill_in "trip[duration]", :with => "test"
+    fill_in "trip[duration]", :with => 90
     fill_in "trip[start_station]", :with => "Denver"
-    fill_in "trip[start_date]", :with => '111'
+    fill_in "trip[start_date]", :with => 10-10-2010
     fill_in "trip[end_station]", :with => "Thornton"
     fill_in "trip[end_date]", :with => "Thornton"
     fill_in "trip[bike_id]", :with => "3"
