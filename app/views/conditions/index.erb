@@ -1,0 +1,29 @@
+<h1 id='greeting'> Weather Index</h1>
+<form action = "/conditions/new" method="get">
+  <input type = "submit" value = "New Weather"/>
+</form>
+
+<th>Date</th>
+<th>Max Temperature</th>
+<th>Mean Temperature</th>
+<th>Min Temperature</th>
+<th>Mean Visibility(mi.)</th>
+<th>Mean Wind Speed(mph)</th>
+<th>Precipitation(in.)</th>
+<br/>
+  <% @conditions.each do |condtion| %>
+  <tr>
+    <td> <a href='/conditions/<%= condtion.id %>"><%condition.name %></a></td>
+    <td>station.max_temperature</td>
+    <td>station.mean_temperature</td>
+    <td>station.min_temperature</td>
+    <td>station.mean_visibility</td>
+    <td>station.mean_wind_speed/td>
+    <td>station.precipitation</td>
+    <td>
+      <form action ="/conditions/<&=condition.id %> "method="post">
+        <input type="hidden" name="_method" values="DELETE"/>
+        <input type="submit" value="Delete"/>
+    </td>
+    <td>
+      <td><a href="/conditions/<%condition.id %>/edit">Edit</a></td>
