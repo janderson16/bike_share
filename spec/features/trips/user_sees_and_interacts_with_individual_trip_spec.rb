@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe "when user views individual trip" do
   it "they can view that trip" do
-    station = Station.find_or_create_by(id: 5)
-    bike = Bike.find_or_create_by(id: 50).id
-    subs = Subscription.find_or_create_by(id: 1).id
+    city = City.create(name: 'Denver')
+    bike = Bike.create(serial_no: '1')
+    station = Station.create(name: 'Station', dock_count: 3, city: city, installation_date: '11/11/2011' )
+    subs = Subscription.create(kind: 'Subscriber')
 
     trip = Trip.create!(duration: 240, start_date: '10/12/2014', start_station: station,
-                  end_station: station, end_date: '10/12/2014', bike_id: bike,
-                  subscription_id: subs, zip_code: '45678')
+                  end_station: station, end_date: '10/12/2014', bike_id: bike.id,
+                  subscription_id: subs.id, zip_code: '45678')
     visit "/trips/#{trip.id}" do
 
       expect(page).to have_content('1')
@@ -18,18 +19,17 @@ describe "when user views individual trip" do
       expect(page).to have_content("240")
 
     end
-
-
   end
 
   it "they can click on Edit" do
-    station = Station.find_or_create_by(id: 5)
-    bike = Bike.find_or_create_by(id: 50).id
-    subs = Subscription.find_or_create_by(id: 1).id
+    city = City.create(name: 'Denver')
+    bike = Bike.create(serial_no: '1')
+    station = Station.create(name: 'Station', dock_count: 3, city: city, installation_date: '11/11/2011' )
+    subs = Subscription.create(kind: 'Subscriber')
 
     trip = Trip.create!(duration: 240, start_date: '10/12/2014', start_station: station,
-                  end_station: station, end_date: '10/12/2014', bike_id: bike,
-                  subscription_id: subs, zip_code: '45678')
+                  end_station: station, end_date: '10/12/2014', bike_id: bike.id,
+                  subscription_id: subs.id, zip_code: '45678')
     visit "/trips/#{trip.id}" do
 
     click_on "Edit Trip"
@@ -38,13 +38,14 @@ describe "when user views individual trip" do
   end
 
     it "they can click on delete" do
-      station = Station.find_or_create_by(id: 5)
-      bike = Bike.find_or_create_by(id: 50).id
-      subs = Subscription.find_or_create_by(id: 1).id
+      city = City.create(name: 'Denver')
+      bike = Bike.create(serial_no: '1')
+      station = Station.create(name: 'Station', dock_count: 3, city: city, installation_date: '11/11/2011' )
+      subs = Subscription.create(kind: 'Subscriber')
 
       trip = Trip.create!(duration: 240, start_date: '10/12/2014', start_station: station,
-                    end_station: station, end_date: '10/12/2014', bike_id: bike,
-                    subscription_id: subs, zip_code: '45678')
+                    end_station: station, end_date: '10/12/2014', bike_id: bike.id,
+                    subscription_id: subs.id, zip_code: '45678')
       visit "/trips/#{trip.id}"
       click_on "Delete Trip"
       expect(page).to have_current_path "/trips"
