@@ -6,7 +6,7 @@ require 'spec_helper'
         visit("/")
 
         within ("#greeting") do
-          expect(page).to have_content("Stations in Greater San Francisco")
+          expect(page).to have_content(" Bike Share Analytics: Greater San Francisco")
         end
     end
 

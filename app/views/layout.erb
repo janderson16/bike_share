@@ -1,4 +1,4 @@
-    
+
 <!DOCTYPE html>
 <html lang ='en'>
   <head>
@@ -32,8 +32,18 @@
         <li><a href="/trips">Trips</a></li>
         <li><a href="/conditions">Conditions</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+      <ul class="nav navbar-nav navbar-left">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboards <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/home/station_dashboard">Station Dashboard</a></li>
+              <li><a href="/home/trip-dashboard">Trip Dashboard</a></li>
+              <li><a href="/home/weather-dashboard">Weather Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+    </div>
+  </div>
 </nav>
 
     <%= yield %>
