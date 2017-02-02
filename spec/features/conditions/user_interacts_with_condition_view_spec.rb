@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "when user views individual weather condition" do
   it "they can delete that weather condition" do
-    Condition.create(date:"11072016", max_temperature:"100", mean_temperature:"90", min_temperature:"80", mean_humidity:"70", mean_visibility:"60", mean_wind_speed:"50", precipitation:"40")
-    visit "/stations/#{condition.id}"
+    Weather.create(date:"11072016", max_temperature:"100", mean_temperature:"90", min_temperature:"80", mean_humidity:"70", mean_visibility:"60", mean_wind_speed:"50", precipitation:"40")
+    visit "/stations/#{weather.id}"
 
     within ("heading") do
       expect(page).to have_content("11072016")

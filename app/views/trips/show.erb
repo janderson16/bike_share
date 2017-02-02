@@ -1,17 +1,82 @@
- <div id ='trip_id' ><h1>Trip <%= @trip.id %></h1></div>
-<div id = 'table1'>
-<h2>Info</h2>
-<p>Duration <%= @trip.duration %></p>
-<p>Start Date <%= @trip.start_date%></p>
-<p>Start Station <%= @trip.start_station_id %></p>
-<p>End Date <%= @trip.end_date %></p>
-<p>End Station <%= @trip.end_station_id %></p>
-<p>Bike ID <%= @trip.bike_id %></p>
-<p>Subscription Type <%= @trip.subscription_id %></p>
-<p>Zip Code <%= @trip.zip_code %></p>
-<a href="/trips/<%= @trip.id %>/edit"><input type="submit" value="Edit Trip" /></a>
-<form action="/trips/<%= @trip.id %>" method="post">
-  <input type="hidden" name="_method" value="DELETE" />
-  <input type="submit" value="Delete Trip" />
-</form>
+<div class="maindiv">
+  <div id ='trip_id' ><h1>Trip <%= @trip.id %></h1></div>
+  <table>
+    <tr>
+      <th>
+        Attribute
+      </th>
+      <th>
+        This Trip
+      </th>
+    </tr>
+    <tr>
+      <td>
+        Duration
+      </td>
+      <td>
+        <%= @trip.duration %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Start Date
+      </td>
+      <td>
+        <%= @trip.start_date%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Start Station
+      </td>
+      <td>
+        <%= @trip.start_station_id %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        End Date
+      </td>
+      <td>
+        <%= @trip.end_date %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        End Station
+      </td>
+      <td>
+        <%= @trip.end_station_id %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Bike ID
+      </td>
+      <td>
+        <%= @trip.bike_id %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Subscription Type
+      </td>
+      <td>
+        <%= @trip.subscription_id %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Zip Code
+      </td>
+      <td>
+        <%= @trip.zip_code %>
+      </td>
+    </tr>
+  </table>
+  <a href="/trips/<%= @trip.id %>/edit"><input type="submit" value="Edit Trip" /></a>
+  <form action="/trips/<%= @trip.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete Trip" />
+  </form>
 </div>

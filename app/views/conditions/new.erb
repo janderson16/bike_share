@@ -1,20 +1,23 @@
+<div class="maindiv">
 <h1>Add New Weather Conditions</h1>
 
 <form action='/conditions/new' method="post">
 <label for =""> Date:</label>
-<input type="textfield" placeholder="Date" name="condition[date]" value="<%= @condition.date %>"><br>
+<input type="textfield" placeholder="Date" name="weather[date]"/><br>
 <label for =""> Max Temperature:</label>
-<input type="textfield" placeholder="Max Temperature" name="condition[max_temperature]" value="<%= @condition.max_temperature %>"><br>
+<input type="textfield" placeholder="Max Temperature" name="weather[max_temperature]"/><br>
 <label for =""> Mean Temperature</label>
-<input type="textfield" placeholder="Mean Temperature" name="condition[mean_temperature]" value="<%= @condition.mean_temperature %>"><br>
+<input type="textfield" placeholder="Mean Temperature" name="weather[mean_temperature]"/><br>
 <label for = "">Min Temperature:</label>
-<input type="textfield" placeholder="Min Temperature" name="condition[min_temperature]" value="<%= @condition.mean_temperature %>"><br>
+<input type="textfield" placeholder="Min Temperature" name="weather[min_temperature]"/><br>
 <label for = ""> Mean Humidity:</label>
-<input type="textfield" placeholder="Mean Humidity" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>"><br>
+<input type="textfield" placeholder="Mean Humidity" name="weather[mean_humidity]"/><br>
 <label for = "">Mean Visibility:</label>
-<input type="textfield" placeholder="Mean Visibility" name="condition[mean_visibilty]" value="<%= @condition.mean_visibilty%>"><br>
+<input type="textfield" placeholder="Mean Visibility" name="weather[mean_visibilty]"/>
 <label for = "">Mean Wind Speed:</label>
-<input type="textfield" placeholder="Mean Wind Speed" name="condition[mean_wind_speed]" value="<%= @condition.mean_wind_speed %>"><br>
+<input type="textfield" placeholder="Mean Wind Speed" name="weather[mean_wind_speed]"/>
 <label for = "">Precipitation:</label>
-<input type="textfield" placeholder="Precipitation" name="condition[precipitation]" value="<%= @condition.precipitation %>"><br>
+<input type="textfield" placeholder="Precipitation" name="weather[precipitation]"/>
+<input type="submit" value="Add New Weather Condition" />
 </form>
+</div>
