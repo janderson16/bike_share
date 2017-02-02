@@ -2,29 +2,80 @@
 <h1 id ="heading">Station Dashboard</h1>
 
 <div id = "data1">
-  <p>Total number of stations in Greater San Francisco <em><%= Station.total_number_of_stations%></em></p>
+  <table>
 
-  <p>Average number of bikes available per station <em><%= Station.average_number_of_bikes_available_per_station %></em></p>
+  <th>
+    <center>Records Query</center>
+  </th>
+  <th>
+     <center>Analytics</center>
+  </th>
+  <tr>
+    <td>
+      Total number of stations in Greater San Francisco
+    </td>
+    <td>
+      <em><%= Station.total_number_of_stations%></em>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Average number of bikes available per station
+    </td>
+    <td>
+      <em><%= Station.average_number_of_bikes_available_per_station %></em>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Most Bikes available at a station
+    </td>
+    <td>
+      <%=Station.most_bikes_available_at_station%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fewest bikes available at a station
+    </td>
+    <td>
+      <%=Station.fewest_bikes_available_at_station%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Station(s) with maximum amount of bikes
+    </td>
+    <td>
+      <%=Station.station_with_max_bikes%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Station(s) with minimum amount of  bikes
+    </td>
+    <td>
+      <%=Station.station_with_min_bikes%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Oldest Station(s)
+    </td>
+    <td>
+      <%=Station.oldest_station%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Newest Station(s)
+    </td>
+    <td>
+      <%=Station.newest_station%>
+    </td>
+  </tr>
 
-  <p> Most Bikes available at a station <%=Station.most_bikes_available_at_station%> </p>
+</table>
 
-  <p> Fewest bikes available at a station <%=Station.fewest_bikes_available_at_station%> </p>
-
-  <p> Station(s) with maximum amount of  bikes 
-    <%=Station.station_with_max_bikes%>
-  </p>
-
-  <p> Station(s) with minimum amount of  bikes 
-    <%=Station.station_with_min_bikes%>
-  </p>
-
-  <p> Oldest Station(s) 
-    <%=Station.oldest_station%>
-  </p>
-
-  <p> Newest Station(s)
-   <%=Station.newest_station%>
-  </p>
 </div>
 </div>
-
