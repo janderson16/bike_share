@@ -13,8 +13,14 @@ describe "when a user visits new weather conditions page" do
     fill_in "weather[mean_wind_speed]", :with => "25"
     fill_in "weather[precipitation]", :with => "0"
 
-    weather = Weather.create(date:"11072016", max_temp:"100", mean_temp:"50", min_temp:"0", mean_humidity:"50", mean_visibility_miles:"50", mean_wind_speed:"25", precipitation:"0")
-    click_on("Add New Weather Condition")
-    expect(current_path).to eql "/conditions/new"
+    click_on("Add New Weather Condition") do
+    expect(current_path).to eql "/conditions/1"
+    expect(page).to have_content('2013-08-06')
+    expect(page).to have_content('100')
+    expect(page).to have_content('50')
+    expect(page).to have_content('50')
+    expect(page).to have_content('25')
+    expect(page).to have_content('0')
+  end
   end
 end

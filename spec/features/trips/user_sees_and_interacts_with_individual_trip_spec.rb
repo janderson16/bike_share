@@ -6,8 +6,6 @@ describe "when user views individual trip" do
     bike = Bike.find_or_create_by(id: 50).id
     subs = Subscription.find_or_create_by(id: 1).id
 
-
-
     trip = Trip.create!(duration: 240, start_date: '10/12/2014', start_station: station,
                   end_station: station, end_date: '10/12/2014', bike_id: bike,
                   subscription_id: subs, zip_code: '45678')
