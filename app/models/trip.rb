@@ -87,4 +87,16 @@ class Trip < ActiveRecord::Base
   def self.subscriber_breakout
     "#{((subscriber_count.to_f)/ ((subscriber_count.to_f) + (customer_count.to_f)) *100).to_i}%"
   end
+
+  def self.user_gen_trip(params)
+    self.create!(duration:           params['duration'],
+                start_date:         Date.strptime(params['start_date'], '%m/%d/%Y'),
+                start_station_id:   params['start_station_id'],
+                end_date:           Date.strptime(params['end_date'], '%m/%d/%Y'),
+                bike_id:            Bike.find_or_create_by(id: params['bike_id']).id,
+                subscription_id:    Subscription.find_or_create_by(id: params['subscription_id'].to_i).id,
+                zip_code:           params['zip_code'],
+                end_station_id:     params['end_station_id']
+                )
+  end
 end

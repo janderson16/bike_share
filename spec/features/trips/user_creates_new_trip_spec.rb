@@ -6,17 +6,20 @@ describe "when a user visits create trips" do
     visit "/trips/new"
 
     fill_in "trip[duration]", :with => 90
-    fill_in "trip[start_date]", :with => 10-10-2010
-    fill_in "trip[end_date]", :with => 10-10-2010
+    fill_in "trip[start_date]", :with => '10/10/2010'
+    fill_in "trip[end_date]", :with => '10/10/2010'
     fill_in "trip[bike_id]", :with => "3"
     fill_in "trip[zip_code]", :with => "56789"
-    fill_in "trip[subscription_id]", :with => "subscriber"
+    fill_in "trip[subscription_id]", :with => '2'
 
     within ("#dropdown") do
       select "Santiago", from: "trip[end_station_id]", :match => :first
     end
     click_on("Add New Trip")
-    expect(current_path).to eql "/trips/#{@trip1}"
+    expect(current_path).to eql "/trips/2"
+    expect(page).to have_content "56789"
+    expect(page).to have_content "2010-10-10"
+    expect(page).to have_content "Santiago"
   end
 end
 
