@@ -1,5 +1,6 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
+require 'pry'
 
 class BikeShareApp < Sinatra::Base
   include WillPaginate::Sinatra::Helpers
@@ -131,4 +132,13 @@ class BikeShareApp < Sinatra::Base
     redirect "/conditions"
   end
 
+  get '/home/weather-dashboard' do
+    @weathers = Weather.all
+    erb :'home/weather-dashboard'
+  end
+
+  put '/home/weather-dashboard' do
+    Weather.average_rides_in_temp_range(cars)
+    erb :'home/weather-dashboard'
+  end
 end
