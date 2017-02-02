@@ -11,9 +11,7 @@ require 'spec_helper'
     end
 
     it "they can click view trips" do
-      Trip.create!(duration: 30, start_date: "10-10-2011", start_station_id: 1,
-                    end_station_id: 2, end_date: "10-11-2011", bike_id: '12323',
-                    subscription_id: 'subscriber', zip_code: '45678')
+      setup
       visit "/trips"
 
     click_link "Edit"
@@ -21,13 +19,14 @@ require 'spec_helper'
   end
 
     it "they can delete trips" do
-      Trip.create!(duration: 30, start_date: "10-10-2011", start_station_id: 1,
-                    end_station_id: 2, end_date: "10-11-2011", bike_id: '12323',
-                    subscription_id: 'subscriber', zip_code: '45678')
+    setup
       visit "/trips"
 
       click_on "Delete"
-      expect(page).to have_no_content("tomorrow")
+      expect(page).not_to have_content("tomorrow")
+      expect(page).not_to have_content("Trip 1")
+      expect(page).not_to have_content("Denver")
+      expect(page).not_to have_content("11/11/2011")
     end
 
     it "they can click new station button" do
@@ -38,22 +37,35 @@ require 'spec_helper'
     end
 
     it "user sees a list of trips and index is not empty" do
-      Trip.create!(duration: 30, start_date: "10-10-2011", start_station_id: 1,
-                    end_station_id: 2, end_date: "10-11-2011", bike_id: '12323',
-                    subscription_id: 'subscriber', zip_code: '45678')
+    setup
       visit "/trips"
-
       expect(page).to have_content("Trip 1")
+      expect(page).to have_content("Station")
+      expect(page).to have_content("45678")
+      expect(page).to have_content("2014-12-10")
     end
 
     it "user clicks on specific station to view its show page" do
-      Trip.create!(duration: 30, start_date: "10-10-2011", start_station_id: 1,
-                    end_station_id: 2, end_date: "10-11-2011", bike_id: '12323',
-                    subscription_id: 'subscriber', zip_code: '45678')
+    setup
       visit "/trips"
 
       click_link "Trip 1"
       expect(page).to have_current_path("/trips/1")
+      expect(page).to have_content("Trip 1")
+      expect(page).to have_content("Station")
+      expect(page).to have_content("45678")
+      expect(page).to have_content("2014-12-10")
     end
 
+  end
+
+  def setup
+    city = City.create(name: 'Denver')
+    bike = Bike.create(serial_no: '1')
+    station = Station.create(name: 'Station', dock_count: 3, city: city, installation_date: '11/11/2011' )
+    subs = Subscription.create(kind: 'Subscriber')
+
+    trip = Trip.create!(duration: 240, start_date: '10/12/2014', start_station: station,
+                  end_station: station, end_date: '10/12/2014', bike_id: bike.id,
+                  subscription_id: subs.id, zip_code: '45678')
   end
