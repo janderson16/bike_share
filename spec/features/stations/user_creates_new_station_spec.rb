@@ -10,11 +10,11 @@ describe "when a user visits create stations" do
     fill_in "station[installation_date]", :with => "2013-08-06"
     click_on("Add New Station")
 
-    
+
     # expect(current_path).to eql "/stations/#{@station1}"
 
     within ("#heading") do
-    expect(page).to have_content "Add a New Station"
+    expect(page).to have_content "Denver"
     end
     within ("#table1") do
     expect(page).to have_content "Denver"

@@ -51,6 +51,10 @@ require 'spec_helper'
 
       click_link "Trip 1"
       expect(page).to have_current_path("/trips/1")
+      expect(page).to have_content("Trip 1")
+      expect(page).to have_content("Station")
+      expect(page).to have_content("45678")
+      expect(page).to have_content("2014-12-10")
     end
 
   end
