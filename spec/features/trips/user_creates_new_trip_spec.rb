@@ -13,24 +13,23 @@ describe "when a user visits create trips" do
     fill_in "trip[subscription_id]", :with => '2'
 
     within ("#dropdown") do
-      select "Santiago", from: "trip[end_station_id]", :match => :first
+      select "Station", from: "trip[end_station_id]", :match => :first
     end
     click_on("Add New Trip")
     expect(current_path).to eql "/trips/2"
     expect(page).to have_content "56789"
     expect(page).to have_content "2010-10-10"
-    expect(page).to have_content "Santiago"
   end
 end
 
 def setup
-  City.create(name: "Denver")
-  City.create(name: "Boulder")
-  Station.create(name: "Santiago" , dock_count: 20, city_id: City.first.id, installation_date: "11-07-2016")
-  Station.create(name: "SF1" , dock_count: 22, city_id: City.last.id, installation_date: "11-07-2016")
-  Trip.create(duration: 90, start_date: "2012-02-03", start_station_id: Station.first.id,
-              end_date: "2012-02-04", end_station_id: Station.last.id,
-              bike_id: "123abc", subscription_id: "subscriber",
-              zip_code: "12345")
+  city = City.create(name: 'Denver')
+  bike = Bike.create(serial_no: '1')
+  station = Station.create(name: 'Station', dock_count: 3, city: city, installation_date: '11/11/2011' )
+  subs = Subscription.create(kind: 'Subscriber')
+
+  trip = Trip.create!(duration: 240, start_date: '10/12/2014', start_station: station,
+                end_station: station, end_date: '10/12/2014', bike_id: bike.id,
+                subscription_id: subs.id, zip_code: '45678')
 
 end
