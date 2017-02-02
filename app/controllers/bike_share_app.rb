@@ -65,8 +65,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips/new' do
-    @trip = Trip.create(params[:trip])
-    @trip1 = Trip.first.id
+    @trip = Trip.user_gen_trip(params[:trip])
     redirect "trips/#{@trip.id}"
   end
 
