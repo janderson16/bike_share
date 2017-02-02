@@ -1,32 +1,30 @@
-<div id = 'heading'>
-  <h1><%= @condition.date</h1>
+<div id = 'heading'> <h1> Condition for <%=@weather.date%></div>
+
 
 <h3>Information</h3>
-<div id = 'table1>
+<div id = 'table1'>
 <table>
   <tr>
     <th>Max Temperature</th>
     <th>Mean Temperature</th>
-    <th>Min Temperature</th>
     <th>Mean Humidity</th>
     <th>Mean Visibility(mi.)</th>
     <th>Mean Wind Speed(mph)</th>
     <th>Precipitation(in.</th>
   </tr>
   <tr>
-    <td>@condition.max_temperature</td>
-    <td>@condition.mean_temperature</td>    
-    <td>@condition.min_tempereture</td>    
-    <td>@condition.mean_humidity</td>    
-    <td>@condition.mean_visibilty</td>    
-    <td>@condition.mean_wind_speed</td>    
-    <td>@condition.precipitation</td>    
+    <td><%= @weather.max_temp %></td>
+    <td><%= @weather.mean_temp %></td>    
+    <td><%= @weather.mean_humidity %></td>    
+    <td><%= @weather.mean_visibility_miles %></td>    
+    <td><%= @weather.mean_wind_speed %></td>    
+    <td><%= @weather.precipitation %></td>    
   </tr>
 </table>
 </div>
 
-<a href='/conditions/<%= @condition.id %>/edit'><input type="submit" value="Edit Weather"/></a>
-<form action="/stations/<%=@station.id %>" method="post">
+<a href='/conditions/<%= @weather.id %>/edit'><input type="submit" value="Edit Weather Condition"/></a>
+<form action="/conditions/<%=@weather.id %>" method="post">
   <input type = "hidden" name="_method" value="DELETE"/>
   <input type = "submit" value="Delete Weather Condition"/>
 </form>

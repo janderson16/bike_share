@@ -1,29 +1,34 @@
+<div class="maindiv">
 <h1 id='greeting'> Weather Index</h1>
 <form action = "/conditions/new" method="get">
-  <input type = "submit" value = "New Weather"/>
+  <input type = "submit" value = "New Weather Condition"/>
 </form>
 
 <th>Date</th>
 <th>Max Temperature</th>
 <th>Mean Temperature</th>
-<th>Min Temperature</th>
 <th>Mean Visibility(mi.)</th>
 <th>Mean Wind Speed(mph)</th>
 <th>Precipitation(in.)</th>
 <br/>
-  <% @conditions.each do |condition| %>
+  <% @weathers.each do |weather| %>
   <tr>
-    <td> <a href='/conditions/<%= condition.id %>"><%condition.name %></a></td>
-    <td>station.max_temperature</td>
-    <td>station.mean_temperature</td>
-    <td>station.min_temperature</td>
-    <td>station.mean_visibility</td>
-    <td>station.mean_wind_speed/td>
-    <td>station.precipitation</td>
+    <td> <a href="/conditions/<%= weather.id %>">Weather Condition for <%=weather.date %></a></td>
+    <td> <%= weather.max_temp %> </td>
+    <td> <%= weather.mean_temp %> </td>
+    <td> <%= weather.mean_visibility_miles %> </td>
+    <td> <%= weather.mean_wind_speed %> </td>
+    <td> <%= weather.precipitation %> </td>
     <td>
-      <form action ="/conditions/<&=condition.id %> "method="post">
+      <form action ="/weathers/<%=weather.id %> "method="post">
         <input type="hidden" name="_method" values="DELETE"/>
         <input type="submit" value="Delete"/>
     </td>
     <td>
-      <td><a href="/conditions/<%condition.id %>/edit">Edit</a></td>
+      <td><a href="/conditions/<%=weather.id %>/edit">Edit</a></td>
+      </td>
+      </tr>
+      <br/>
+      <% end %>
+      <%= will_paginate @weathers %>
+  </div>

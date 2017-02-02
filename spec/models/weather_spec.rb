@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-  describe Condition do
+  describe Weather do
     describe "validates" do
       it "validates presence of date" do
         station_invalid = Condition.create(max_temperature:"90", mean_temperature:"50", min_temperature:"0", mean_humidity:"10", mean_visibility:"10", mean_wind_speed:"25", precipitation:"10")
