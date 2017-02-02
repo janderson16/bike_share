@@ -108,8 +108,8 @@ class BikeShareApp < Sinatra::Base
     erb :'conditions/new'
   end
 
-  post 'conditions/new' do
-    @weathers = weathers.create(params[:condition])
+  post '/conditions/new' do
+    @weather = Weather.create(params[:weather])
     redirect "conditions/#{@weather.id}"
   end
 
@@ -124,7 +124,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/conditions/:id' do
-    @weathers = weather.update(params[:id], params[:condition])
+    @weathers = weather.update(params[:id], params[:weather])
     redirect "conditions/#{@weather.id}"
 
   delete '/conditions/:id'
