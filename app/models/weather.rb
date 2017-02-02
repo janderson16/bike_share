@@ -51,8 +51,8 @@ class Weather < ActiveRecord::Base
     b.maximum(:id)
   end
 
-  def self.min_number_of_rides_with_wind
-    a = where('mean_wind_speed > ? AND mean_wind_speed < ?', 0, 4)
+  def self.min_number_of_rides_with_wind(low, high)
+    a = where('mean_wind_speed > ? AND mean_wind_speed < ?', low, high)
     b = Trip.where(weather_id: a.all.ids)
     b.minimum(:id)
   end

@@ -31,7 +31,7 @@ weather_cells.each do |row|
       mean_humidity:          row[8].to_i,
       mean_visibility_miles:  row[14].to_i,
       mean_wind_speed:        row[17].to_i,
-      precipitation:          row[19]
+      precipitation:          row[19].to_f,
       date:                   Date.strptime(row[0], '%m/%d/%Y'),
       min_temp:               row[3].to_i
                   )
