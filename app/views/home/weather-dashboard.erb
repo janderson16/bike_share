@@ -1,31 +1,21 @@
-<h1>Weather Dashboard</h1>
+<div class="maindiv">
+<h1 id ="heading">Weather Dashboard</h1>
 
-<p> Average number of trips on days between <%= @weathers.average_number_of_rides %> </p>
-<p> Maximum trips on days between <%= @weathers.max_number_rides_in_temp_range %> </p>
-<p> Minimum trips on days between <%= @weathers.min_number_rides_in_temp_range %> </p>
+<div id ="data1"
+<p> Average number of trips on days between <em> <%= @weathers.average_number_of_rides %> </em> </p>
+<p> Maximum trips on days between <em> <%= @weathers.max_number_rides_in_temp_range %> </em> </p>
+<p> Minimum trips on days between <em> <%= @weathers.min_number_rides_in_temp_range %> </em> </p>
 
-<p> Average number of trips on days with __ precipitation <%= @weathers.average_number_of_rides_with_precip %> </p>
-<p> Maximum number of trips on days with __ precipitation <%= @weathers.max_number_rides_with_precip %> </p>
-<p> Minimum number of trips on days with __ precipitation <%= @weathers.min_number_rides_with_precip %> </p>
+<p> Average number of trips on days with __ precipitation in inches <em> <%= @weathers.average_number_of_rides_with_precip %> </em> </p>
+<p> Maximum number of trips on days with __ precipitation in inches <em> <%= @weathers.max_number_rides_with_precip %> </em> </p>
+<p> Minimum number of trips on days with __ precipitation in inches <em> <%= @weathers.min_number_rides_with_precip %> </em> </p>
 
-<p> Average number of trips on days with __ wind <%= @weathers.average_number_of_rides_with_wind %> </p>
-<p> Maximum number of trips on days with __ wind <%= @weathers.max_number_of_rides_with_wind %> </p>
-<p> Minimum number of trips on days with __ wind <%= @weathers.min_number_of_rides_with_wind %> </p>
+<p> Average number of trips on days with __ wind in miles <em> <%= @weathers.average_number_of_rides_with_wind %> </em> </p>
+<p> Maximum number of trips on days with __ wind in miles <em> <%= @weathers.max_number_of_rides_with_wind %> </em> </p>
+<p> Minimum number of trips on days with __ wind in miles <em> <%= @weathers.min_number_of_rides_with_wind %> </em> </p>
 
-<p> Average number of trips on days with __ visibility <%= @weathers.average_number_of_rides_with_visibility %> </p>
-<p> Maximum number of trips on days with __ visibility <%= @weathers.max_number_of_rides_with_visibility %> </p>
-<p> Minimum number of trips on days with __ visibility <%= @weathers.min_number_of_rides_with_visibility %> </p>
-
-<!-- <form action="/home/weather-dashboard/edit" method="post">
-  <input type="hidden" name="_method" value="PUT" /> <select name="temp_range">
-   <option value="40-50">40-50</option>
-   <option value="50-60">50-60</option>
-   <option value="60-70">60-70</option>
-   <option value="70-80">70-80</option>
- </select>
- <br><br>
- <input type="submit">
-</form> -->
-<!-- <label for =""> Mean Temperature</label>
-<input type="textfield" placeholder=" °F" name="@low"/><br>
-<input type="textfield" placeholder=" °F" name="hi"/><br> -->
+<p> Average number of trips on days with __ visibility in miles <em> <%= @weathers.average_number_of_rides_with_visibility %> </em> </p>
+<p> Maximum number of trips on days with __ visibility in miles <em> <%= @weathers.max_number_of_rides_with_visibility %> </em> </p>
+<p> Minimum number of trips on days with __ visibility in miles <em> <%= @weathers.min_number_of_rides_with_visibility %> </em> </p>
+</div>
+</div>

@@ -11,17 +11,17 @@ class Trip < ActiveRecord::Base
 
   def self.average_duration_of_ride
     time = self.average :duration
-    time.round(1).seconds
+    time.round(1)
   end
 
   def self.longest_ride
     time = self.maximum :duration
-    time.round(1).
+    time.round(1)
   end
 
   def self.shortest_ride
     time = self.minimum :duration
-    time.round(1).seconds
+    time.round(1)
   end
 
   def self.station_with_most_starting_rides
@@ -64,7 +64,6 @@ class Trip < ActiveRecord::Base
     self.where("subscription_id = '2'").count
   end
 
-
   def self.most_common_date
     date = self.group('start_date').order('count(*)').pluck(:start_date).last
     date.strftime("%B %e, %Y")
@@ -89,11 +88,25 @@ class Trip < ActiveRecord::Base
     "#{((subscriber_count.to_f)/ ((subscriber_count.to_f) + (customer_count.to_f)) *100).to_i}%"
   end
 
+
   def self.most_rides_weather
     Weather.where(date: most_common_date).first
   end
 
   def self.least_rides_weather
     Weather.where(date: least_common_date).first
+  end
+
+  def self.user_gen_trip(params)
+    self.create!(duration:           params['duration'],
+                start_date:         Date.strptime(params['start_date'], '%m/%d/%Y'),
+                start_station_id:   params['start_station_id'],
+                end_date:           Date.strptime(params['end_date'], '%m/%d/%Y'),
+                bike_id:            Bike.find_or_create_by(id: params['bike_id']).id,
+                subscription_id:    Subscription.find_or_create_by(id: params['subscription_id'].to_i).id,
+                zip_code:           params['zip_code'],
+                end_station_id:     params['end_station_id']
+                )
+
   end
 end

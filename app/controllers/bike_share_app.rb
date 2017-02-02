@@ -23,7 +23,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations/new' do
-    @station = Station.create(params[:station])
+    @station = Station.user_gen_station(params[:station])
     redirect "/stations/#{@station.id}"
   end
 
@@ -66,8 +66,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips/new' do
-    @trip = Trip.create(params[:trip])
-    @trip1 = Trip.first.id
+    @trip = Trip.user_gen_trip(params[:trip])
     redirect "trips/#{@trip.id}"
   end
 
@@ -109,8 +108,8 @@ class BikeShareApp < Sinatra::Base
     erb :'conditions/new'
   end
 
-  post 'conditions/new' do
-    @weathers = weathers.create(params[:condition])
+  post '/conditions/new' do
+    @weather = Weather.create(params[:weather])
     redirect "conditions/#{@weather.id}"
   end
 
@@ -125,7 +124,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/conditions/:id' do
-    @weathers = weather.update(params[:id], params[:condition])
+    @weathers = weather.update(params[:id], params[:weather])
     redirect "conditions/#{@weather.id}"
 
   delete '/conditions/:id'

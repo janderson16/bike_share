@@ -67,5 +67,13 @@ class Station < ActiveRecord::Base
     self.start_trips.group('bike_id', 'id').order('count(*)').first.bike_id
   end
 
+  def self.user_gen_station(params)
+    self.create(name: params[:name],
+                   dock_count: params[:dock_count],
+                   city: City.find_or_create_by(name: params[:name]),
+                   installation_date: params[:installation_date])
+  end
+
+
 
 end
