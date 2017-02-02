@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202010825) do
+ActiveRecord::Schema.define(version: 20170202050031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,10 @@ ActiveRecord::Schema.define(version: 20170202010825) do
     t.integer "mean_humidity"
     t.integer "mean_visibility_miles"
     t.integer "mean_wind_speed"
-    t.float   "precipitation"
-    t.date    "date"
+    t.decimal "precipitation",         precision: 4, scale: 3
+    t.integer "trip_id"
     t.integer "min_temp"
+    t.date    "date"
   end
 
 end

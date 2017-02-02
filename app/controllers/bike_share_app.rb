@@ -132,7 +132,7 @@ class BikeShareApp < Sinatra::Base
     redirect "/conditions"
   end
 
-  get '/home/weater-dashboard' do
+  get '/home/weather-dashboard' do
     @weathers = Weather.all
     erb :'home/weather-dashboard'
   end

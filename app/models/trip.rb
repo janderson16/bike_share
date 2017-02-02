@@ -43,7 +43,6 @@ class Trip < ActiveRecord::Base
     year_rides = self.group("DATE_TRUNC('year', start_date)").count
     year_rides.map do |m|
       "Year: #{m[0].strftime("%Y")}, Count: #{m[1]}"
-      # require "pry"; binding.pry
     end
   end
 

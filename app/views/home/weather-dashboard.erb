@@ -1,1 +1,14 @@
 <h1>Weather Dashboard</h1>
+
+<p> Average number of trips on days between <%= @weathers.average_number_of_rides %> </p>
+<p> Maximum trips on days between <%= @weathers.max_number_rides_in_temp_range %> </p>
+<p> Minimum trips on days between <%= @weathers.min_number_rides_in_temp_range %> </p>
+
+
+<p> Average number of trips on days with __ wind <%= @weathers.average_number_of_rides_with_wind %> </p>
+<p> Maximum number of trips on days with __ wind <%= @weathers.max_number_of_rides_with_wind %> </p>
+<p> Minimum number of trips on days with __ wind <%= @weathers.min_number_of_rides_with_wind %> </p>
+
+<p> Average number of trips on days with __ visibility <%= @weathers.average_number_of_rides_with_visibility %> </p>
+<p> Maximum number of trips on days with __ visibility <%= @weathers.max_number_of_rides_with_visibility %> </p>
+<p> Minimum number of trips on days with __ visibility <%= @weathers.min_number_of_rides_with_visibility %> </p>
