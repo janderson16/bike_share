@@ -131,4 +131,8 @@ end
     redirect "/conditions"
   end
 
+  get '/home/weater-dashboard' do
+    @weathers = Weather.all
+    erb :'home/weather-dashboard'
+  end
 end
