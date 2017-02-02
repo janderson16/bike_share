@@ -6,21 +6,23 @@ require 'spec_helper'
         visit("/")
 
         within ("#greeting") do
-          expect(page).to have_content("Bikesharing dashboard")
+          expect(page).to have_content("Stations in Greater San Francisco")
         end
     end
 
     it "they can click on a create station button" do
-    visit "/"
+      visit "/" do
 
-    click_on "add Stations"
+    click_button("Add New Station")
     expect(page).to have_current_path "/stations/new"
+        end
     end
 
     it "they can click view stations" do
-    visit "/"
+    visit "/" do
 
-    click_on "View Stations"
+    click_button("View All Stations")
     expect(page).to have_current_path "/stations/index"
+    end
   end
 end
