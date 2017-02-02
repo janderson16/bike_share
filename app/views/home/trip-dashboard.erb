@@ -1,13 +1,18 @@
 <h1>Trip Dashboard</h1>
 
-Average duration of a ride.
-Longest ride.
-Shortest ride.
-Station with the most rides as a starting place.
-Station with the most rides as an ending place.
-Month by Month breakdown of number of rides with subtotals for each year.
-Most ridden bike with total number of rides for that bike.
-Least ridden bike with total number of rides for that bike.
-User subscription type breakout with both count and percentage.
-Single date with the highest number of trips with a count of those trips.
-Single date with the lowest number of trips with a count of those trips
+<p>Average duration of a ride.<%= @trips.average_duration_of_ride %></p>
+
+<p>Longest ride.<%= @trips.longest_ride %></p>
+<p>Shortest ride.<%= @trips.shortest_ride %></p>
+<p>Station with the most rides as a starting place.<%= @trips.station_with_most_starting_rides %></p>
+<p>Station with the most rides as an ending place.<%= @trips.station_with_most_ending_rides %></p>
+<p>Month by Month breakdown of number of rides with subtotals for each year.<%= @trips.rides_per_month %> <%= @trips.rides_per_year%> </p>
+<p>Most ridden bike with total number of rides for that bike.<%= @trips.rides_per_year %></p>
+<p>Least ridden bike with total number of rides for that bike.<%= @trips.most_ridden_bike %></p>
+<p>User subscription type breakout with both count and percentage.<%= @trips.least_ridden_bike %></p>
+<p>Single date with the highest number of trips with a count of those trips.<%= @trips.most_common_date_count %></p>
+<p>Single date with the lowest number of trips with a count of those trips<%= @trips.least_common_date_count %></p>
+<p>Single date with the lowest number of trips with a count of those trips<%= @trips.customer_count %></p>
+<p>Single date with the lowest number of trips with a count of those trips<%= @trips.customer_count %></p>
+<p>Weather on the day with the highest number of rides: <%= @trips.customer_count %></p>
+<p>Weather on the day with the lowest number of rides: <%= @trips.customer_count %></p>
