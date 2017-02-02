@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "when a user visit index weather conditions page" do
   it "they see a welcome message" do
-    visit("conditions")
+    visit("/conditions")
 
     within("#greeting") do
       expect(page).to have_content("Weather Index")
