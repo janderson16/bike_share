@@ -10,15 +10,18 @@ class Trip < ActiveRecord::Base
   belongs_to :weather
 
   def self.average_duration_of_ride
-    self.average :duration
+    time = self.average :duration
+    time.round(1).seconds
   end
 
   def self.longest_ride
-    self.maximum :duration
+    time = self.maximum :duration
+    time.round(1).
   end
 
   def self.shortest_ride
-    self.minimum :duration
+    time = self.minimum :duration
+    time.round(1).seconds
   end
 
   def self.station_with_most_starting_rides
@@ -35,7 +38,6 @@ class Trip < ActiveRecord::Base
     month_rides = self.group("DATE_TRUNC('month', start_date)").count
     month_rides.map do |m|
       "Month: #{m[0].strftime("%B")}, Count: #{m[1]}"
-      # require "pry"; binding.pry
     end
   end
 
@@ -85,5 +87,13 @@ class Trip < ActiveRecord::Base
 
   def self.subscriber_breakout
     "#{((subscriber_count.to_f)/ ((subscriber_count.to_f) + (customer_count.to_f)) *100).to_i}%"
+  end
+
+  def self.most_rides_weather
+    Weather.where(date: most_common_date).first
+  end
+
+  def self.least_rides_weather
+    Weather.where(date: least_common_date).first
   end
 end

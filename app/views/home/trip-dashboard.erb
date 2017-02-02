@@ -1,13 +1,53 @@
-<h1>Trip Dashboard</h1>
+<div class="maindiv">
+<h1 id ="heading">Trip Dashboard</h1>
 
-Average duration of a ride.
-Longest ride.
-Shortest ride.
-Station with the most rides as a starting place.
-Station with the most rides as an ending place.
-Month by Month breakdown of number of rides with subtotals for each year.
-Most ridden bike with total number of rides for that bike.
-Least ridden bike with total number of rides for that bike.
-User subscription type breakout with both count and percentage.
-Single date with the highest number of trips with a count of those trips.
-Single date with the lowest number of trips with a count of those trips
+<div id = "data1">
+<p>Average duration of a ride:<em> <%= @trips.average_duration_of_ride %> </em></p>
+<p>Longest ride:<em> <%= @trips.longest_ride %> </em></p>
+<p>Shortest ride:<em> <%= @trips.shortest_ride %> </em></p>
+<p>Station with the most rides as a starting place:
+  <em> <%= @trips.station_with_most_starting_rides %> </em>
+</p>
+
+<p>Station with the most rides as an ending place:
+  <em> <%= @trips.station_with_most_ending_rides %> </em>
+</p>
+
+<p>Month by Month breakdown of number of rides with subtotals for each year:
+  <em> <%= @trips.rides_per_month %> </em> <em> <%= @trips.rides_per_year%> </em>
+</p>
+
+<p>Most ridden bike with total number of rides for that bike:
+  <em> <%= @trips.rides_per_year %> </em>
+</p>
+
+<p>Least ridden bike with total number of rides for that bike:
+  <em> <%= @trips.most_ridden_bike %> </em></p>
+<p>User subscription type breakout with both count and percentage:
+  <em> <%= @trips.least_ridden_bike %> </em>
+</p>
+
+<p>Single date with the highest number of trips with a count of those trips:
+  <em> <%= @trips.most_common_date_count %> </em>
+</p>
+
+<p>Single date with the lowest number of trips with a count of those trips:
+  <em> <%= @trips.least_common_date_count %> </em>
+</p>
+
+<p>Single date with the lowest number of trips with a count of those trips:
+  <em> <%= @trips.customer_count %> </em>
+</p>
+
+<p>Single date with the lowest number of trips with a count of those trips:
+  <em> <%= @trips.customer_count %> </em>
+</p>
+
+<p>Weather on the day with the highest number of rides:
+  <em> <%= @trips.customer_count %> </em>
+</p>
+<p>Weather on the day with the lowest number of rides:
+  <em> <%= @trips.customer_count %> </em>
+</p>
+</div>
+</div>
