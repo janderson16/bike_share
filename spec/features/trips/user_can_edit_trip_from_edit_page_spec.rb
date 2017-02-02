@@ -17,7 +17,13 @@ require 'spec_helper'
   describe "when a user clicks update" do
     it "they see updated trip " do
       setup
-      visit("/trips/1/edit")
+      visit("/trips/1/edit") do
+
+        fill_in "trip[duration]", :with => 321
+        fill_in "trip[start_date]", :with => "2013-08-06"
+        fill_in "trip[bike_id]", :with => 111
+        fill_in "trip[subscription_id]", :with => 1
+
       click_on("Update Trip")
       expect(page).to have_current_path "/trips/1"
 
@@ -26,13 +32,14 @@ require 'spec_helper'
       end
 
       within ("#table1") do
+        expect(page).to have_content "321"
+        expect(page).to have_content "2013-08-06"
+        expect(page).to have_content "111"
         expect(page).to have_content "1"
-        expect(page).to have_content "123abc"
-        expect(page).to have_content "2012-02-04"
       end
     end
   end
-
+end
   def setup
     City.create(name: "Denver")
     City.create(name: "Boulder")
