@@ -3,8 +3,9 @@
 <h1 id='greeting'>Stations in Greater San Francisco</h1>
 </br>
 </br>
-<div id ='new'> <a href="/stations/new" method="get">New Station</a></div>
-
+<form action = "/stations/new" method="get">
+  <input type = "submit" value = "Create New Station"/>
+</form>
 <table border="1">
   <tr>
     <th>Name</th>
@@ -31,8 +32,8 @@
   </tr>
   <% end %>
  </table>
- 
-  
+
+
   <div class="maindiv">
   <%= will_paginate @stations %>
   </div>
