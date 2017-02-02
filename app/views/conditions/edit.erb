@@ -1,18 +1,24 @@
+<div class = "maindiv">
 <h1 id='greeting'> Update Weather Records</h1>
 
-<form id = 'form' action="/conditions/<%= @weather.date %>" method="post">
+<form id = 'form' action="/conditions/<%= @weather.id %>" method="post">
 <input type="hidden" name="_method" value="PUT" />
+<label for =""> Date:</label>
+<input type="textfield" value="<%= @weather.date %>" name="weather[date]"/><br>
 <label for =""> Max Temperature:</label>
 <input type="textfield" value="<%= @weather.max_temp %>" name="weather[max_temp]"/><br>
 <label for =""> Mean Temperature</label>
 <input type="textfield" value="<%= @weather.mean_temp %>" name="weather[mean_temp]"/><br>
+<label for =""> Min Temperature</label>
+<input type="textfield" value="<%= @weather.min_temp %>" name="weather[min_temp]"/><br>
 <label for = ""> Mean Humidity:</label>
 <input type="textfield" value="<%= @weather.mean_humidity %>" name="weather[mean_humidity]"/><br>
 <label for = "">Mean Visibility(Mi.):</label>
-<input type="textfield" value="<%= @weather.mean_visibility_miles%>" name="weather[mean_visibilty_miles]"/><br>
+<input type="textfield" value="<%= @weather.mean_visibility_miles%>" name="weather[mean_visibility_miles]"/><br>
 <label for = "">Mean Wind Speed(MPH):</label>
 <input type="textfield" value="<%= @weather.mean_wind_speed %>" name="weather[mean_wind_speed]"/><br>
 <label for = "">Precipitation:</label>
 <input type="textfield" value="<%= @weather.precipitation %>" name="weather[precipitation]"/><br>
 <input type="submit" value="Update Conditions" />
 </form>
+</div>
