@@ -1,47 +1,47 @@
 require "spec_helper"
 require 'pry'
 
-# describe ".average_rides_in_temp_range" do
-#   it "returns .average_rides_in_temp_range" do
-#     setup
-#     expect(Weather.average_number_of_rides(40, 50)).to eql(1)
-#     end
-#   end
-#
-# describe ".max_number_rides_in_temp_range" do
-#   it "returns .max_number_rides_in_temp_range" do
-#     setup
-#     expect(Weather.max_number_rides_in_temp_range(40, 50)).to eql(1)
-#     end
-#   end
-#
-#   describe ".min_number_rides_in_temp_range" do
-#     it "returns .min_number_rides_in_temp_range" do
-#       setup
-#       expect(Weather.min_number_rides_in_temp_range(40, 50)).to eql(1)
-#       end
-#     end
-#
-#   describe ".average_number_of_rides_with_precip" do
-#     it "returns .average_number_of_rides_with_precip" do
-#       setup
-#       expect(Weather.average_number_of_rides_with_precip(0.0, 0.5)).to eql(1)
-#       end
-#     end
-#
-#   describe ".max_number_of_rides_with_precip" do
-#     it "returns .max_number_of_rides_with_precip" do
-#       setup
-#       expect(Weather.max_number_of_rides_with_precip(0.0, 0.5)).to eql(1)
-#       end
-#     end
-#
-#   describe ".min_number_of_rides_with_precip" do
-#     it "returns .min_number_of_rides_with_precip" do
-#       setup
-#       expect(Weather.min_number_of_rides_with_precip(0.0, 0.5)).to eql(1)
-#       end
-#     end
+describe ".average_rides_in_temp_range" do
+  it "returns .average_rides_in_temp_range" do
+    setup
+    expect(Weather.average_number_of_rides(40, 50)).to eql(1)
+    end
+  end
+
+describe ".max_number_rides_in_temp_range" do
+  it "returns .max_number_rides_in_temp_range" do
+    setup
+    expect(Weather.max_number_rides_in_temp_range(40, 50)).to eql(1)
+    end
+  end
+
+  describe ".min_number_rides_in_temp_range" do
+    it "returns .min_number_rides_in_temp_range" do
+      setup
+      expect(Weather.min_number_rides_in_temp_range(40, 50)).to eql(1)
+      end
+    end
+
+  describe ".average_number_of_rides_with_precip" do
+    it "returns .average_number_of_rides_with_precip" do
+      setup
+      expect(Weather.average_number_of_rides_with_precip(0.0, 0.5)).to eql(1)
+      end
+    end
+
+  describe ".max_number_rides_with_precip" do
+    it "returns .max_number_rides_with_precip" do
+      setup
+      expect(Weather.max_number_rides_with_precip(0.0, 0.5)).to eql(1)
+      end
+    end
+
+  describe ".min_number_rides_with_precip" do
+    it "returns .min_number_rides_with_precip" do
+      setup
+      expect(Weather.min_number_rides_with_precip(0.0, 0.5)).to eql(1)
+      end
+    end
 
   describe ".average_number_of_rides_with_wind" do
     it "returns .average_number_of_rides_with_wind" do
@@ -50,6 +50,40 @@ require 'pry'
       end
     end
 
+  describe ".max_number_of_rides_with_wind" do
+    it "returns .max_number_of_rides_with_wind" do
+      setup
+      expect(Weather.max_number_of_rides_with_wind).to eql(3)
+      end
+    end
+
+    describe ".min_number_of_rides_with_wind" do
+      it "returns .min_number_of_rides_with_wind" do
+        setup
+        expect(Weather.min_number_of_rides_with_wind).to eql(1)
+        end
+      end
+
+    describe ".average_number_of_rides_with_visibility" do
+      it "returns .average_number_of_rides_with_visibility" do
+        setup
+        expect(Weather.average_number_of_rides_with_visibility).to eql(1)
+        end
+      end
+
+    describe ".max_number_of_rides_with_visibility" do
+      it "returns .max_number_of_rides_with_visibility" do
+        setup
+        expect(Weather.max_number_of_rides_with_visibility).to eql(1)
+        end
+      end
+
+    describe ".min_number_of_rides_with_visibility" do
+      it "returns .min_number_of_rides_with_visibility" do
+        setup
+        expect(Weather.min_number_of_rides_with_visibility).to eql(1)
+        end
+      end
 
 def setup
   bike = Bike.create(serial_no: "12365")
