@@ -25,7 +25,7 @@ Weather.create(date:"11072016", max_temp:"100", mean_temp:"90", min_temp:"80", m
 
     visit "/conditions/1"
     click_on "Edit Weather Condition"
-      expect(current_path).to eql "/conditions/1"
+       expect(page).to have_current_path "/conditions/1"
     end
   end
 end
